@@ -19,7 +19,12 @@ private slots:
     void on_Connection_clicked();
 
     void on_cancel_clicked();
-
+    /**
+     * @brief check if login and password are correct
+     * @param log
+     * @param pass
+     * @return
+     */
     bool verification_login_password(QString log,QString pass);
 
 
