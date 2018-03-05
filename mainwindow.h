@@ -2,7 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include "nclient.h"
+#include "npersonnel.h"
+#include "sabout.h"
+#include <QMenu>
+#include <QMenuBar>
 namespace Ui {
 class MainWindow;
 }
@@ -17,9 +21,21 @@ public:
 
 private slots:
     void createMenus();
+    void createActions();
+    void CClient();
+    void QExit();
+    void CPersonnel();
+    void slotAbout();
 private:
     Ui::MainWindow *ui;
     QMenu *File;
+     QMenu *Add;
+    QMenu *Toolbar;
+     QAction *Quit;
+    QAction *Client;
+    QAction *Personnel;
+    QAction *aAbout;
+
 };
 
 #endif // MAINWINDOW_H
