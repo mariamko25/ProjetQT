@@ -64,7 +64,7 @@ void MainWindow::createActions()
 {
     Client = new QAction(tr("&Client"), this);
     Client->setStatusTip(tr("Add a new Client"));
-    QIcon clientIcon(":/Downloads/clientIcon.jpeg");
+    QIcon clientIcon(":clientIcon.jpeg");
     Client->setIcon(clientIcon);
     connect(Client, &QAction::triggered, this, &MainWindow::CClient);
 
@@ -74,7 +74,7 @@ void MainWindow::createActions()
 
     Personnel = new QAction(tr("&Personnel"), this);
     Personnel->setStatusTip(tr("Add a new Personnel"));
-    QIcon personnelIcon(":/Downloads/personnelIcon.jpeg");
+    QIcon personnelIcon(":personnelIcon.jpeg");
     Personnel->setIcon(personnelIcon);
     connect(Personnel, &QAction::triggered, this, &MainWindow::CPersonnel);
 
