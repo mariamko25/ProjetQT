@@ -35,6 +35,9 @@ private:
     QAction *Client;
     QAction *Personnel;
     QAction *aAbout;
+    QAction *ClientTool;
+    QAction *PersonnelTool;
+
 
 };
 

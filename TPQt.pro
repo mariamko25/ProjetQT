@@ -20,12 +20,26 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp \
     mainwindow.cpp \
-    identification.cpp
+    identification.cpp \
+    sabout.cpp \
+    nclient.cpp \
+    npersonnel.cpp
 
 FORMS += \
     mainwindow.ui \
-    identification.ui
+    identification.ui \
+    sabout.ui \
+    npersonnel.ui \
+    nclient.ui
 
 HEADERS += \
     mainwindow.h \
-    identification.h
+    identification.h\
+    npersonnel.h \
+    nclient.h \
+    sabout.h
+
+RESOURCES += \
+    image.qrc
+
+

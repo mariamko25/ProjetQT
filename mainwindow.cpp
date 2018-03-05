@@ -19,7 +19,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::QExit()
 {
-    exit(0);
+    close();
 
 }
 
@@ -53,10 +53,8 @@ void MainWindow::createMenus()
     File->addAction(Quit);
     File->addAction(aAbout);
     Toolbar=ui->menubar->addMenu(tr("&Toolbar"));
-
-
-    Toolbar->addAction(Client);
-    Toolbar->addAction(Personnel);
+    Toolbar->addAction(ClientTool);
+    Toolbar->addAction(PersonnelTool);
 
 }
 
@@ -64,8 +62,6 @@ void MainWindow::createActions()
 {
     Client = new QAction(tr("&Client"), this);
     Client->setStatusTip(tr("Add a new Client"));
-    QIcon clientIcon(":/Downloads/clientIcon.jpeg");
-    Client->setIcon(clientIcon);
     connect(Client, &QAction::triggered, this, &MainWindow::CClient);
 
     Quit = new QAction(tr("&Exit"), this);
@@ -74,13 +70,23 @@ void MainWindow::createActions()
 
     Personnel = new QAction(tr("&Personnel"), this);
     Personnel->setStatusTip(tr("Add a new Personnel"));
-    QIcon personnelIcon(":/Downloads/personnelIcon.jpeg");
-    Personnel->setIcon(personnelIcon);
     connect(Personnel, &QAction::triggered, this, &MainWindow::CPersonnel);
 
     aAbout = new QAction(tr("&About"), this);
     aAbout->setStatusTip(tr("Show information"));
     connect(aAbout, &QAction::triggered, this, &MainWindow::slotAbout);
+
+    ClientTool = new QAction(tr("&Client"), this);
+    ClientTool->setStatusTip(tr("Add a new Client"));
+    QIcon clientIcon(":clientIcon.jpeg");
+    ClientTool->setIcon(clientIcon);
+    connect(ClientTool, &QAction::triggered, this, &MainWindow::CClient);
+
+    PersonnelTool = new QAction(tr("&Personnel"), this);
+    PersonnelTool->setStatusTip(tr("Add a new Personnel"));
+    QIcon personnelIcon(":personnelIcon.jpeg");
+    PersonnelTool->setIcon(personnelIcon);
+    connect(PersonnelTool, &QAction::triggered, this, &MainWindow::CPersonnel);
 
 
 }
