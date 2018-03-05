@@ -6,53 +6,71 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>509</width>
+    <height>357</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QFrame" name="frame">
+   <widget class="QToolBox" name="toolBox">
     <property name="geometry">
      <rect>
-      <x>109</x>
-      <y>70</y>
-      <width>251</width>
-      <height>181</height>
+      <x>80</x>
+      <y>34</y>
+      <width>301</width>
+      <height>191</height>
      </rect>
     </property>
-    <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
+    <property name="currentIndex">
+     <number>1</number>
     </property>
-    <property name="frameShadow">
-     <enum>QFrame::Raised</enum>
-    </property>
-    <widget class="QWidget" name="gridLayoutWidget">
+    <widget class="QWidget" name="Recherche">
      <property name="geometry">
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>251</width>
-       <height>181</height>
+       <width>301</width>
+       <height>123</height>
       </rect>
      </property>
-     <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
-       <widget class="QLabel" name="label">
-        <property name="minimumSize">
-         <size>
-          <width>249</width>
-          <height>179</height>
-         </size>
-        </property>
-        <property name="text">
-         <string>         WELCOME DEAR USER ADMIN</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+     <attribute name="label">
+      <string>Page 1</string>
+     </attribute>
+     <widget class="QTableView" name="ViewRecherhe">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>281</width>
+        <height>91</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="Planification">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>301</width>
+       <height>123</height>
+      </rect>
+     </property>
+     <attribute name="label">
+      <string>Page 2</string>
+     </attribute>
+     <widget class="QTableView" name="ViewPlanification">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>20</y>
+        <width>281</width>
+        <height>192</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
@@ -61,9 +79,15 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>509</width>
      <height>22</height>
     </rect>
+   </property>
+   <property name="defaultUp">
+    <bool>false</bool>
+   </property>
+   <property name="nativeMenuBar">
+    <bool>false</bool>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
