@@ -62,6 +62,7 @@ void MainWindow::createActions()
 {
     Client = new QAction(tr("&Client"), this);
     Client->setStatusTip(tr("Add a new Client"));
+
     connect(Client, &QAction::triggered, this, &MainWindow::CClient);
 
     Quit = new QAction(tr("&Exit"), this);
@@ -70,6 +71,7 @@ void MainWindow::createActions()
 
     Personnel = new QAction(tr("&Personnel"), this);
     Personnel->setStatusTip(tr("Add a new Personnel"));
+
     connect(Personnel, &QAction::triggered, this, &MainWindow::CPersonnel);
 
     aAbout = new QAction(tr("&About"), this);

@@ -42,4 +42,3 @@ HEADERS += \
 RESOURCES += \
     image.qrc
 
-

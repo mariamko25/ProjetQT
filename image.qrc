@@ -1,7 +1,7 @@
 <RCC>
     <qresource prefix="/">
-        <file>personnelIcon.jpeg</file>
         <file>clientIcon.jpeg</file>
         <file>logo.jpg</file>
+        <file>personnelIcon.jpeg</file>
     </qresource>
 </RCC>
