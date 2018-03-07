@@ -23,7 +23,11 @@ SOURCES += main.cpp \
     identification.cpp \
     sabout.cpp \
     nclient.cpp \
-    npersonnel.cpp
+    npersonnel.cpp \
+    cclient.cpp \
+    cressource.cpp \
+    CRdv.cpp \
+    ctriclient.cpp
 
 FORMS += \
     mainwindow.ui \
@@ -37,7 +41,11 @@ HEADERS += \
     identification.h\
     npersonnel.h \
     nclient.h \
-    sabout.h
+    sabout.h \
+    cclient.h \
+    CRdv.h \
+    ctriclient.h \
+    c.h
 
 RESOURCES += \
     image.qrc
