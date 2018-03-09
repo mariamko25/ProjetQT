@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     createActions();
     createMenus();
 
+
 }
 
 MainWindow::~MainWindow()
