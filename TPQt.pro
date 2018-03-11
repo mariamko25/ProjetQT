@@ -25,7 +25,6 @@ SOURCES += main.cpp \
     nclient.cpp \
     npersonnel.cpp \
     cclient.cpp \
-    cressource.cpp \
     CRdv.cpp \
     ctriclient.cpp
 
@@ -45,7 +44,6 @@ HEADERS += \
     cclient.h \
     CRdv.h \
     ctriclient.h \
-    c.h
 
 RESOURCES += \
     image.qrc
