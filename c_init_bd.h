@@ -2,10 +2,10 @@
 #define C_INIT_BD_H
 
 
-class c_init_bd
+class C_INIT_BD
 {
 public:
-    c_init_bd();
+    C_INIT_BD();
 };
 
 #endif // C_INIT_BD_H
