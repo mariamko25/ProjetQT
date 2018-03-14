@@ -1,8 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "connection.h"
 #include "QSqlQueryModel"
-#include"connection.h"
-
+#include<QVariantList>
+#include <QDebug>
 
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -118,6 +119,11 @@ void MainWindow::on_Btn_Load_clicked()
 void MainWindow::on_pushButton_3_clicked()
 {
 
+
+}
+
+void MainWindow::on_Btn_ResearchBy_clicked()
+{
     Connection con= Connection();
       con.open();
 
@@ -128,31 +134,46 @@ void MainWindow::on_pushButton_3_clicked()
 
       if(combovalue=="Firstname")
       {
-          qry->prepare("select* from TClient where Prenom=?");
-          qry->addBindValue(ui->LE_Firstname);
+          qry->prepare("select* from TClient where UPPER(Prenom)=UPPER(?)");
+          qry->addBindValue(ui->LE_Firstname->text());
       }
       else if(combovalue=="Lastname")
       {
-          qry->prepare("select* from TClient where Nom=?");
-          qry->addBindValue(ui->LE_Lastname);
+          qry->prepare("select* from TClient where upper(Nom)=upper(?)");
+          qry->addBindValue(ui->LE_Lastname->text());
+      }
+      else if(combovalue=="ID")
+      {
+          qry->prepare("select* from TClient where Id=?");
+          qry->addBindValue(ui->LE_ID->text());
       }
       else if(combovalue=="date")
       {
-            qry->prepare("select* from TClient where DateRdv ");
+            qry->prepare("select* from TClient where DateRdv BETWEEN '?' AND '?' ");
+            qry->addBindValue(ui->dateEdit->text());
+            qry->addBindValue(ui->dateEdit_2->text());
       }
       else if(combovalue=="name")
       {
-          qry->prepare("select* from TClient where Nom=? AND Prenom=? ");
-          qry->addBindValue(ui->LE_Lastname);
-          qry->addBindValue(ui->LE_Firstname);
+          qry->prepare("select* from TClient where upper(Nom)=upper(?) AND UPPER(Prenom)=UPPER(?) ");
+          qry->addBindValue(ui->LE_Firstname->text());
+          qry->addBindValue(ui->LE_Lastname->text());
 
       }
 
 
       qry->exec();
+
       modal->setQuery(*qry);
       ui->tableView->setModel(modal);
 
       con.close();
 
+
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    //int ligne = ui->tableView->currentIndex().row();
+    //model->removeRows(ligne,1);
 }

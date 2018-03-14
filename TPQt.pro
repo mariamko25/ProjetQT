@@ -1,7 +1,7 @@
 QT += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-QT+=sql
+QT += sql
 TARGET = TPQt
 TEMPLATE = app
 
@@ -45,7 +45,6 @@ HEADERS += \
     cclient.h \
     CRdv.h \
     ctriclient.h \
-    c.h \
     c_init_bd.h \
     connection.h
 
