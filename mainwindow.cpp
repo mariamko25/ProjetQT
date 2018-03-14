@@ -112,6 +112,47 @@ void MainWindow::on_Btn_Load_clicked()
 
     con.close();
 
-
 }
 
+
+void MainWindow::on_pushButton_3_clicked()
+{
+
+    Connection con= Connection();
+      con.open();
+
+      QSqlQueryModel * modal= new QSqlQueryModel();
+      QSqlQuery* qry= new QSqlQuery(con.getDb());
+
+      QString combovalue=ui->CBox_ResearchBy->currentText();
+
+      if(combovalue=="Firstname")
+      {
+          qry->prepare("select* from TClient where Prenom=?");
+          qry->addBindValue(ui->LE_Firstname);
+      }
+      else if(combovalue=="Lastname")
+      {
+          qry->prepare("select* from TClient where Nom=?");
+          qry->addBindValue(ui->LE_Lastname);
+      }
+      else if(combovalue=="date")
+      {
+            qry->prepare("select* from TClient where DateRdv ");
+      }
+      else if(combovalue=="name")
+      {
+          qry->prepare("select* from TClient where Nom=? AND Prenom=? ");
+          qry->addBindValue(ui->LE_Lastname);
+          qry->addBindValue(ui->LE_Firstname);
+
+      }
+
+
+      qry->exec();
+      modal->setQuery(*qry);
+      ui->tableView->setModel(modal);
+
+      con.close();
+
+}
