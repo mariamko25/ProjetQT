@@ -26,7 +26,8 @@ SOURCES += main.cpp \
     cclient.cpp \
     CRdv.cpp \
     ctriclient.cpp \
-    c_init_bd.cpp
+    c_init_bd.cpp \
+    connection.cpp
 
 FORMS += \
     mainwindow.ui \
@@ -45,7 +46,8 @@ HEADERS += \
     CRdv.h \
     ctriclient.h \
     c.h \
-    c_init_bd.h
+    c_init_bd.h \
+    connection.h
 
 RESOURCES += \
     image.qrc
