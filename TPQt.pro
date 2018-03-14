@@ -1,10 +1,9 @@
 QT += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-
+QT+=sql
 TARGET = TPQt
 TEMPLATE = app
-
 
 
 # The following define makes your compiler emit warnings if you use
@@ -26,7 +25,9 @@ SOURCES += main.cpp \
     npersonnel.cpp \
     cclient.cpp \
     CRdv.cpp \
-    ctriclient.cpp
+    ctriclient.cpp \
+    c_init_bd.cpp \
+    connection.cpp
 
 FORMS += \
     mainwindow.ui \
@@ -44,6 +45,9 @@ HEADERS += \
     cclient.h \
     CRdv.h \
     ctriclient.h \
+    c.h \
+    c_init_bd.h \
+    connection.h
 
 RESOURCES += \
     image.qrc

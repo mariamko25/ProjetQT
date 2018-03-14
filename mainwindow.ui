@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>509</width>
-    <height>357</height>
+    <width>772</width>
+    <height>551</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,10 +17,10 @@
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>20</x>
       <y>20</y>
-      <width>431</width>
-      <height>281</height>
+      <width>691</width>
+      <height>421</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
@@ -29,36 +29,102 @@
        <property name="currentIndex">
         <number>0</number>
        </property>
-       <widget class="QWidget" name="Recherche">
+       <widget class="QWidget" name="Research">
         <attribute name="title">
-         <string>Recherche</string>
+         <string>Research</string>
         </attribute>
-        <widget class="QWidget" name="gridLayoutWidget_2">
+        <widget class="QWidget" name="horizontalLayoutWidget">
          <property name="geometry">
           <rect>
-           <x>30</x>
-           <y>40</y>
-           <width>341</width>
-           <height>181</height>
+           <x>90</x>
+           <y>0</y>
+           <width>411</width>
+           <height>41</height>
           </rect>
          </property>
-         <layout class="QGridLayout" name="gridLayout_2">
-          <item row="0" column="0">
-           <widget class="QLineEdit" name="TextRecherche">
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QLineEdit" name="LE_Firstname">
             <property name="text">
-             <string>Tapez votre recherche</string>
+             <string>Firstname</string>
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
-           <widget class="QTableView" name="tableView"/>
+          <item>
+           <widget class="QLineEdit" name="LD_Lastname">
+            <property name="text">
+             <string>Lastname</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="LE_ID">
+            <property name="text">
+             <string>ID</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
+        <widget class="QWidget" name="horizontalLayoutWidget_2">
+         <property name="geometry">
+          <rect>
+           <x>150</x>
+           <y>40</y>
+           <width>317</width>
+           <height>31</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>from</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QDateEdit" name="dateEdit"/>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>to</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QDateEdit" name="dateEdit_2"/>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QTableView" name="tableView">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>80</y>
+           <width>631</width>
+           <height>241</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="Btn_Load">
+         <property name="geometry">
+          <rect>
+           <x>230</x>
+           <y>340</y>
+           <width>93</width>
+           <height>28</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>LOAD</string>
+         </property>
+        </widget>
        </widget>
-       <widget class="QWidget" name="Plannification">
+       <widget class="QWidget" name="planning">
         <attribute name="title">
-         <string>Plannification</string>
+         <string>planning</string>
         </attribute>
         <widget class="QWidget" name="gridLayoutWidget_3">
          <property name="geometry">
@@ -145,7 +211,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>509</width>
+     <width>772</width>
      <height>26</height>
     </rect>
    </property>

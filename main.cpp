@@ -1,12 +1,13 @@
 #include <QApplication>
 #include "identification.h"
 #include "mainwindow.h"
+#include<c_init_bd.h>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-   
-    
+
+
  //Identification id;
    /* if(id.exec()==QDialog::Accepted)
     {
@@ -15,12 +16,13 @@ int main(int argc, char *argv[])
     }
     return 0;*/
 
-
+    //C_INIT_BD bd;
+    //bd.Creation_BD();
     MainWindow w;
     w.show();
     return a.exec();
-    
-    
+
+
 }
 
 

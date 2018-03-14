@@ -1,5 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "QSqlQueryModel"
+#include"connection.h"
+
 
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -93,3 +96,22 @@ void MainWindow::createActions()
 
 
 }
+
+void MainWindow::on_Btn_Load_clicked()
+{
+    Connection con= Connection();
+    con.open();
+
+    QSqlQueryModel * modal= new QSqlQueryModel();
+
+    QSqlQuery* qry= new QSqlQuery(con.getDb());
+    qry->prepare("select* from TClient");
+    qry->exec();
+    modal->setQuery(*qry);
+    ui->tableView->setModel(modal);
+
+    con.close();
+
+
+}
+

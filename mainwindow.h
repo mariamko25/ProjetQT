@@ -26,6 +26,8 @@ private slots:
     void QExit();
     void CPersonnel();
     void slotAbout();
+    void on_Btn_Load_clicked();
+
 private:
     Ui::MainWindow *ui;
     QMenu *File;
