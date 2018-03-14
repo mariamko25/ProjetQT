@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>772</width>
-    <height>551</height>
+    <width>905</width>
+    <height>615</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -51,7 +51,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QLineEdit" name="LD_Lastname">
+           <widget class="QLineEdit" name="LE_Lastname">
             <property name="text">
              <string>Lastname</string>
             </property>
@@ -103,7 +103,7 @@
           <rect>
            <x>20</x>
            <y>80</y>
-           <width>631</width>
+           <width>531</width>
            <height>241</height>
           </rect>
          </property>
@@ -120,6 +120,80 @@
          <property name="text">
           <string>LOAD</string>
          </property>
+        </widget>
+        <widget class="QWidget" name="verticalLayoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>570</x>
+           <y>100</y>
+           <width>101</width>
+           <height>191</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QPushButton" name="pushButton">
+            <property name="text">
+             <string>modify</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_2">
+            <property name="text">
+             <string>delete</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="verticalLayoutWidget_2">
+         <property name="geometry">
+          <rect>
+           <x>530</x>
+           <y>0</y>
+           <width>121</width>
+           <height>71</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QComboBox" name="CBox_ResearchBy">
+            <item>
+             <property name="text">
+              <string>Firstname</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Lastname</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>ID</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>date</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>name</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="Btn_ResearchBy">
+            <property name="text">
+             <string>Research</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </widget>
        <widget class="QWidget" name="planning">
@@ -211,7 +285,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>772</width>
+     <width>905</width>
      <height>26</height>
     </rect>
    </property>

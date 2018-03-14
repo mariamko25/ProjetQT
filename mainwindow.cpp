@@ -103,7 +103,7 @@ void MainWindow::on_Btn_Load_clicked()
 
     QSqlQueryModel * modal= new QSqlQueryModel();
 
-    QSqlQuery* qry= new QSqlQuery(con.getDb());
+    QSqlQuery *qry= new QSqlQuery(con.getDb());
     qry->prepare("select* from TClient");
     qry->exec();
     modal->setQuery(*qry);
