@@ -12,7 +12,7 @@ private:
     QSqlDatabase db;
 public:
     Connection();
-    void  open();
+    void open();
     void close();
     QSqlDatabase getDb() const;
     void setDb(const QSqlDatabase &value);
