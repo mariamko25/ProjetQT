@@ -1,8 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "QSqlQueryModel"
-#include"connection.h"
-
+#include "connection.h"
+#include <QSqlQueryModel>
 
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)

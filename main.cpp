@@ -16,8 +16,8 @@ int main(int argc, char *argv[])
     }
     return 0;*/
 
-    //C_INIT_BD bd;
-    //bd.Creation_BD();
+    C_INIT_BD bd;
+    bd.Creation_BD();
     MainWindow w;
     w.show();
     return a.exec();

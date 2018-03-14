@@ -1,9 +1,9 @@
 #ifndef CONNECTION_H
 #define CONNECTION_H
-#include"QSqlDatabase"
-#include "QFile"
+#include <QSqlDatabase>
+#include <QFile>
 #include <QSqlError>
-#include"QSqlQuery"
+#include <QSqlQuery>
 #include <QDebug>
 
 class Connection
@@ -12,8 +12,8 @@ private:
     QSqlDatabase db;
 public:
     Connection();
-    open();
-    close();
+    void  open();
+    void close();
     QSqlDatabase getDb() const;
     void setDb(const QSqlDatabase &value);
 };
