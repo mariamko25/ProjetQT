@@ -28,6 +28,12 @@ private slots:
     void slotAbout();
     void on_Btn_Load_clicked();
 
+    void on_pushButton_3_clicked();
+
+    void on_Btn_ResearchBy_clicked();
+
+    void on_pushButton_2_clicked();
+
 private:
     Ui::MainWindow *ui;
     QMenu *File;
