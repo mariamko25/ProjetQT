@@ -21,6 +21,7 @@ private:
     DB_manager();
 //méthodes
     bool deleteClient(QTableView *tableView, QSqlQueryModel* myModel);
+    bool modifyClient(QTableView *tableView, QSqlQueryModel* myModel);
     bool loadClient(QSqlQueryModel*myModel);
     bool researchClient(QSqlQueryModel* myModel,QString Firstname,QString Lastname, QString id,QDate date1, QDate date2);
     void connection();

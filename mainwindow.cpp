@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "connection.h"
 #include<QVariantList>
 #include <QDebug>
 #include<db_manager.h>
@@ -118,7 +117,12 @@ void MainWindow::on_pushButton_3_clicked()
 
 void MainWindow::on_Btn_ResearchBy_clicked()
 {
-    Connection con= Connection();
+    DB_manager db;
+    db.connection();
+    db.researchClient(myModel,ui->LE_Firstname->text(),ui->LE_Lastname->text(),ui->LE_ID->text(),ui->dateEdit->date(),ui->dateEdit_2->date());
+   db.deconnection();
+    //QSqlQueryModel* myModel,QString Firstname,QString Lastname, QString id,QDate date1, QDate date2
+    /*Connection con= Connection();
       con.open();
 
 
@@ -160,7 +164,7 @@ void MainWindow::on_Btn_ResearchBy_clicked()
 
       qry->exec();
       //model->setQuery(*qry);
-      con.close();
+      con.close();*/
 }
 
 void MainWindow::on_pushButton_2_clicked()

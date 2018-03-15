@@ -5,7 +5,12 @@ DB_manager::DB_manager()
 {
     //model= QSqlQueryModel();
 }
-
+/**
+ * @brief DB_manager::deleteClient méthode qui supprime un client
+ * @param tableView
+ * @param myModel
+ * @return 
+ */
 bool DB_manager::deleteClient(QTableView *tableView, QSqlQueryModel* myModel)
 {
     bool succes;
@@ -14,6 +19,33 @@ bool DB_manager::deleteClient(QTableView *tableView, QSqlQueryModel* myModel)
    // int id=myModel->index(tableView->currentIndex().row(),0).data().toInt();
      QString id=myModel->index(tableView->currentIndex().row(),0).data().toString();
     //qDebug() << ui->tableView->currentIndex().row()+1 << id;
+
+    //on crée la requete
+    QSqlQuery query(db);
+
+    //on fait un prepare pour ajouter l'id à la requête
+    query.prepare("DELETE FROM TClient WHERE Id = ?");
+    query.addBindValue(id);
+    succes=query.exec();
+
+    if(!succes)
+    {
+       qDebug() << query.lastError().text();
+        qDebug() << "erreur sur la requête !\n";
+        return false;
+    }
+      myModel->setQuery(query);
+    loadClient(myModel);
+    return succes;
+}
+
+bool DB_manager::modifyClient(QTableView *tableView, QSqlQueryModel *myModel)
+{
+    bool succes;
+
+    //on récupère l id du client sélectionné
+   // int id=myModel->index(tableView->currentIndex().row(),0).data().toInt();
+     QString id=myModel->index(tableView->currentIndex().row(),0).data().toString();
 
     //on crée la requete
     QSqlQuery query(db);
@@ -94,7 +126,9 @@ bool DB_manager::researchClient(QSqlQueryModel* myModel,QString Firstname,
       myModel->setQuery(qry);
       return succes;
 }
-
+/**
+ * @brief DB_manager::connection connecte à la base de donnée
+ */
 void DB_manager::connection()
 {
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -113,6 +147,9 @@ void DB_manager::connection()
    }
 
 }
+/**
+ * @brief DB_manager::deconnection
+ */
 
 void DB_manager::deconnection()
 {
