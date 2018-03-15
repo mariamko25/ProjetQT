@@ -12,17 +12,14 @@ void Connection::setDb(const QSqlDatabase &value)
 
 Connection::Connection()
 {
-     db = QSqlDatabase::addDatabase("QSQLITE");
+    db = QSqlDatabase::addDatabase("QSQLITE");
     if(db.isValid())
     {
         db.setHostName("localhost");
-    db.setUserName("root");
-    db.setPassword("password");
-
-    if(QFile::exists("base_tmp.sqli"))
-        QFile::remove("base_tmp.sqli");
-
-    db.setDatabaseName("base_tmp.sqli");}
+        db.setUserName("root");
+        db.setPassword("password");
+        db.setDatabaseName("base_tmp.sqli");
+    }
 }
 
 void Connection::open()

@@ -18,10 +18,9 @@ int main(int argc, char *argv[])
 
     C_INIT_BD bd;
     bd.Creation_BD();
-
-
     MainWindow w;
     w.show();
+
     return a.exec();
 
 

@@ -153,7 +153,7 @@ CClient::CClient(QString nm, QString pr, int prior, int duree, QVector<int> ress
     nom=nm;
     prenom=pr;
     priorite=prior;
-   dureeConsultation= duree;
+    dureeConsultation= duree;
     listRessource=ress;
 
 }

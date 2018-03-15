@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 #include "connection.h"
 #include "QSqlQueryModel"
-#include<QVariantList>
+#include <QVariantList>
 #include <QDebug>
 
 
@@ -106,19 +106,13 @@ void MainWindow::on_Btn_Load_clicked()
     QSqlQueryModel * modal= new QSqlQueryModel();
 
     QSqlQuery *qry= new QSqlQuery(con.getDb());
+
     qry->prepare("select* from TClient");
     qry->exec();
     modal->setQuery(*qry);
     ui->tableView->setModel(modal);
 
     con.close();
-
-}
-
-
-void MainWindow::on_pushButton_3_clicked()
-{
-
 
 }
 
