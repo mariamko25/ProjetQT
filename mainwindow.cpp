@@ -1,9 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "connection.h"
-#include "QSqlQueryModel"
 #include<QVariantList>
 #include <QDebug>
+#include<db_manager.h>
 
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -12,7 +12,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->statusbar->showMessage("Connected");
     createActions();
     createMenus();
-
+    myModel=new QSqlQueryModel(this);
+    ui->tableView->setModel(myModel);
 
 }
 
@@ -100,18 +101,11 @@ void MainWindow::createActions()
 
 void MainWindow::on_Btn_Load_clicked()
 {
-    Connection con= Connection();
-    con.open();
 
-    QSqlQueryModel * modal= new QSqlQueryModel();
-
-    QSqlQuery* qry= new QSqlQuery(con.getDb());
-    qry->prepare("select* from TClient");
-    qry->exec();
-    modal->setQuery(*qry);
-    ui->tableView->setModel(modal);
-
-    con.close();
+    DB_manager db;
+    db.connection();
+    db.loadClient(myModel);
+   db.deconnection();
 
 }
 
@@ -127,7 +121,7 @@ void MainWindow::on_Btn_ResearchBy_clicked()
     Connection con= Connection();
       con.open();
 
-      QSqlQueryModel * modal= new QSqlQueryModel();
+
       QSqlQuery* qry= new QSqlQuery(con.getDb());
 
       QString combovalue=ui->CBox_ResearchBy->currentText();
@@ -150,8 +144,10 @@ void MainWindow::on_Btn_ResearchBy_clicked()
       else if(combovalue=="date")
       {
             qry->prepare("select* from TClient where DateRdv BETWEEN '?' AND '?' ");
-            qry->addBindValue(ui->dateEdit->text());
-            qry->addBindValue(ui->dateEdit_2->text());
+            ui->dateEdit->setDisplayFormat("YYYY-MM-DD");
+            ui->dateEdit_2->setDisplayFormat("YYYY-MM-DD");
+            qry->addBindValue(ui->dateEdit->date());
+            qry->addBindValue(ui->dateEdit_2->date());
       }
       else if(combovalue=="name")
       {
@@ -163,17 +159,14 @@ void MainWindow::on_Btn_ResearchBy_clicked()
 
 
       qry->exec();
-
-      modal->setQuery(*qry);
-      ui->tableView->setModel(modal);
-
+      //model->setQuery(*qry);
       con.close();
-
-
 }
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    //int ligne = ui->tableView->currentIndex().row();
-    //model->removeRows(ligne,1);
+    DB_manager db;
+    db.connection();
+    db.deleteClient(ui->tableView, myModel);
+   db.deconnection();
 }

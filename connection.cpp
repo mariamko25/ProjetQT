@@ -18,10 +18,6 @@ Connection::Connection()
         db.setHostName("localhost");
     db.setUserName("root");
     db.setPassword("password");
-
-    if(QFile::exists("base_tmp.sqli"))
-        QFile::remove("base_tmp.sqli");
-
     db.setDatabaseName("base_tmp.sqli");}
 }
 
@@ -37,8 +33,9 @@ void Connection::open()
 void Connection::close(){
 
     if(db.isValid())
-    {db.close();
-    db.removeDatabase("QSQLITE");
+    {
+        db.close();
+        db.removeDatabase("QSQLITE");
     }
 }
 
