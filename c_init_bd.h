@@ -1,6 +1,10 @@
 #ifndef C_INIT_BD_H
 #define C_INIT_BD_H
-
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QDebug>
+#include <QFile>
 
 class C_INIT_BD
 {

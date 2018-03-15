@@ -45,15 +45,26 @@
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
            <widget class="QLineEdit" name="LE_Firstname">
-            <property name="text">
+            <property name="inputMask">
              <string/>
+            </property>
+            <property name="text">
+<<<<<<< HEAD
+             <string/>
+=======
+             <string>FirstName</string>
+>>>>>>> f13c80a8d724ed26a1c16c2755118edcef839a78
             </property>
            </widget>
           </item>
           <item>
            <widget class="QLineEdit" name="LE_Lastname">
             <property name="text">
+<<<<<<< HEAD
              <string/>
+=======
+             <string>LastName</string>
+>>>>>>> f13c80a8d724ed26a1c16c2755118edcef839a78
             </property>
            </widget>
           </item>
@@ -298,7 +309,7 @@
      <x>0</x>
      <y>0</y>
      <width>905</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
    <property name="defaultUp">

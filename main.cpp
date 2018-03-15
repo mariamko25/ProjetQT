@@ -1,7 +1,7 @@
 #include <QApplication>
 #include "identification.h"
 #include "mainwindow.h"
-#include<c_init_bd.h>
+#include "c_init_bd.h"
 
 int main(int argc, char *argv[])
 {
@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
     bd.Creation_BD();
     MainWindow w;
     w.show();
+
     return a.exec();
 
 

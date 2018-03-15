@@ -27,6 +27,11 @@ SOURCES += main.cpp \
     CRdv.cpp \
     ctriclient.cpp \
     c_init_bd.cpp \
+<<<<<<< HEAD
+=======
+    connection.cpp \
+    c_ressource.cpp \
+>>>>>>> f13c80a8d724ed26a1c16c2755118edcef839a78
     db_manager.cpp
 
 FORMS += \
@@ -34,7 +39,8 @@ FORMS += \
     identification.ui \
     sabout.ui \
     npersonnel.ui \
-    nclient.ui
+    nclient.ui \
+    c_ressource.ui
 
 HEADERS += \
     mainwindow.h \
@@ -46,6 +52,11 @@ HEADERS += \
     CRdv.h \
     ctriclient.h \
     c_init_bd.h \
+<<<<<<< HEAD
+=======
+    connection.h \
+    c_ressource.h \
+>>>>>>> f13c80a8d724ed26a1c16c2755118edcef839a78
     db_manager.h
 
 RESOURCES += \

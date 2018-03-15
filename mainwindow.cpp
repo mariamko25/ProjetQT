@@ -101,17 +101,11 @@ void MainWindow::createActions()
 void MainWindow::on_Btn_Load_clicked()
 {
 
+
     DB_manager db;
     db.connection();
     db.loadClient(myModel);
    db.deconnection();
-
-}
-
-
-void MainWindow::on_pushButton_3_clicked()
-{
-
 
 }
 
