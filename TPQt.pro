@@ -28,7 +28,8 @@ SOURCES += main.cpp \
     ctriclient.cpp \
     c_init_bd.cpp \
     connection.cpp \
-    c_ressource.cpp
+    c_ressource.cpp \
+    db_manager.cpp
 
 FORMS += \
     mainwindow.ui \
@@ -49,7 +50,8 @@ HEADERS += \
     ctriclient.h \
     c_init_bd.h \
     connection.h \
-    c_ressource.h
+    c_ressource.h \
+    db_manager.h
 
 RESOURCES += \
     image.qrc

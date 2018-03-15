@@ -1,6 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+#include "QSqlQueryModel"
 #include <QMainWindow>
 #include "nclient.h"
 #include "npersonnel.h"
@@ -45,6 +45,8 @@ private:
     QAction *aAbout;
     QAction *ClientTool;
     QAction *PersonnelTool;
+    QSqlQueryModel *myModel;
+
 
 
 };
