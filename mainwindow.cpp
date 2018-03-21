@@ -123,6 +123,7 @@ void MainWindow::on_Btn_ResearchBy_clicked()
     db.connection();
     db.researchClient(myModel,ui->LE_Firstname->text(),ui->LE_Lastname->text(),ui->LE_ID->text(),ui->dateEdit->date(),ui->dateEdit_2->date());
    db.deconnection();
+<<<<<<< HEAD
 
 }
 

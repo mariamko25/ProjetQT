@@ -25,6 +25,8 @@ private slots:
 
     void on_Cancel_clicked();
 
+    void on_Ressource_clicked();
+
 private:
     Ui::NClient *ui;
 

@@ -1,4 +1,4 @@
-QT += core gui
+Q += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 QT += sql
@@ -30,14 +30,14 @@ SOURCES += main.cpp \
     connection.cpp \
     db_manager.cpp \
     treeitem.cpp \
-    treemodel.cpp
 
 FORMS += \
     mainwindow.ui \
     identification.ui \
     sabout.ui \
     npersonnel.ui \
-    nclient.ui
+    nclient.ui \
+    c_ressource.ui
 
 HEADERS += \
     mainwindow.h \

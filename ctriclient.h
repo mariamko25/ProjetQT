@@ -5,14 +5,13 @@
 class CTriClient
 {
 public:
-    CTriClient();
+  CTriClient();
 
 
   bool operator()(const CClient & c1,const CClient & c2)
-       {
-                 return (c1.getIndice()< c2.getIndice());
-
-       }
+  {
+     return (c1.getIndice()< c2.getIndice());
+  }
 };
 
 #endif // CTRICLIENT_H

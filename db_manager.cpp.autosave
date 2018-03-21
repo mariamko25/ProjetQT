@@ -1,22 +1,39 @@
 #include "db_manager.h"
 
 
+<<<<<<< HEAD
 
 DB_manager::DB_manager()
 {
 
 }
 
+=======
+DB_manager::DB_manager()
+{
+    //model= QSqlQueryModel();
+}
+>>>>>>> 92f75da1ebc1d3ea34a9fe6dc0dbdf28d34ccf42
 /**
  * @brief DB_manager::deleteClient méthode qui supprime un client
  * @param tableView
  * @param myModel
+<<<<<<< HEAD
  * @return
+=======
+ * @return 
+>>>>>>> 92f75da1ebc1d3ea34a9fe6dc0dbdf28d34ccf42
  */
 bool DB_manager::deleteClient(QTableView *tableView, QSqlQueryModel* myModel)
 {
     bool succes;
+<<<<<<< HEAD
     //on récupère l id du client sélectionné
+=======
+
+    //on récupère l id du client sélectionné
+   // int id=myModel->index(tableView->currentIndex().row(),0).data().toInt();
+>>>>>>> 92f75da1ebc1d3ea34a9fe6dc0dbdf28d34ccf42
      QString id=myModel->index(tableView->currentIndex().row(),0).data().toString();
     //qDebug() << ui->tableView->currentIndex().row()+1 << id;
 
@@ -58,6 +75,9 @@ bool DB_manager::deletePersonnel(QTreeView *tableView, QStandardItemModel *myMod
     //on fait un prepare pour ajouter l'id à la requête
     query.prepare("DELETE FROM TRessource WHERE Nom = ?");
     query.addBindValue(name);
+    succes=query.exec();
+
+    if(!succes)
     succes=query.exec();
 
     if(!succes)
@@ -189,6 +209,13 @@ bool DB_manager::researchClient(QSqlQueryModel* myModel,QString Firstname,
       request.append(" and DateRdv BETWEEN '"+date1.toString("yyyy-MM-dd")+"'  AND  '"+date2.toString("yyyy-MM-dd")+"' ");
     }
         //qDebug()<<date1.toString("yyyy-MM-dd");
+=======
+    if(tempDate!=date1 && date2!=tempDate )
+    {
+         //request.append(" and DateRdv BETWEEN '"+date1.toString("YYYY-MM-DD")+"'  AND  '"+date2.toString("YYYY-MM-DD")+"' ");
+    }
+
+>>>>>>> 92f75da1ebc1d3ea34a9fe6dc0dbdf28d34ccf42
     succes=qry.exec(request);
     if(!succes)
     {
@@ -231,3 +258,9 @@ void DB_manager::deconnection()
     }
 }
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 92f75da1ebc1d3ea34a9fe6dc0dbdf28d34ccf42
