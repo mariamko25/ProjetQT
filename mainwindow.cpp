@@ -1,8 +1,8 @@
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
-#include "QSqlQueryModel"
-#include"connection.h"
-
+#include <mainwindow.h>
+#include <ui_mainwindow.h>
+#include<QVariantList>
+#include <QDebug>
+#include<db_manager.h>
 
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -12,13 +12,21 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     createActions();
     createMenus();
 
+    //on initialise les modeles avec la fenetre pour parent
+    myModel=new QSqlQueryModel(this);
+    modelTreePersonnel= new QStandardItemModel(this);
+
+    //on relie le modèle à la tableview
+    ui->tableView->setModel(myModel);
+    ui->treeView->setModel(modelTreePersonnel);
+
 
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-  
+
 }
 
 void MainWindow::QExit()
@@ -27,6 +35,9 @@ void MainWindow::QExit()
 
 }
 
+/**
+ * @brief MainWindow::CClient création d'un nouveau client à partir de l'interface
+ */
 void MainWindow::CClient()
 {
     NClient client;
@@ -34,6 +45,7 @@ void MainWindow::CClient()
     ui->statusbar->showMessage(client.Created);
 
 }
+
 void MainWindow::CPersonnel()
 {
     //ui->label->setText("Personnel");
@@ -94,65 +106,66 @@ void MainWindow::createActions()
     PersonnelTool->setIcon(personnelIcon);
     connect(PersonnelTool, &QAction::triggered, this, &MainWindow::CPersonnel);
 
-
 }
 
 void MainWindow::on_Btn_Load_clicked()
 {
-    Connection con= Connection();
-    con.open();
-
-    QSqlQueryModel * modal= new QSqlQueryModel();
-
-    QSqlQuery* qry= new QSqlQuery(con.getDb());
-    qry->prepare("select* from TClient");
-    qry->exec();
-    modal->setQuery(*qry);
-    ui->tableView->setModel(modal);
-
-    con.close();
+    DB_manager db;
+    db.connection();
+    db.loadClient(myModel);
+   db.deconnection();
 
 }
 
-
-void MainWindow::on_pushButton_3_clicked()
+void MainWindow::on_Btn_ResearchBy_clicked()
 {
+    DB_manager db;
+    db.connection();
+    db.researchClient(myModel,ui->LE_Firstname->text(),ui->LE_Lastname->text(),ui->LE_ID->text(),ui->dateEdit->date(),ui->dateEdit_2->date());
+   db.deconnection();
 
-    Connection con= Connection();
-      con.open();
+}
 
-      QSqlQueryModel * modal= new QSqlQueryModel();
-      QSqlQuery* qry= new QSqlQuery(con.getDb());
-
-      QString combovalue=ui->CBox_ResearchBy->currentText();
-
-      if(combovalue=="Firstname")
-      {
-          qry->prepare("select* from TClient where Prenom=?");
-          qry->addBindValue(ui->LE_Firstname);
-      }
-      else if(combovalue=="Lastname")
-      {
-          qry->prepare("select* from TClient where Nom=?");
-          qry->addBindValue(ui->LE_Lastname);
-      }
-      else if(combovalue=="date")
-      {
-            qry->prepare("select* from TClient where DateRdv ");
-      }
-      else if(combovalue=="name")
-      {
-          qry->prepare("select* from TClient where Nom=? AND Prenom=? ");
-          qry->addBindValue(ui->LE_Lastname);
-          qry->addBindValue(ui->LE_Firstname);
-
-      }
+void MainWindow::on_pushButton_2_clicked()
+{
+    DB_manager db;
+    db.connection();
+    db.deleteClient(ui->tableView, myModel);
+   db.deconnection();
+}
 
 
-      qry->exec();
-      modal->setQuery(*qry);
-      ui->tableView->setModel(modal);
 
-      con.close();
+void MainWindow::on_BtnModifyClient_clicked()
+{
+    DB_manager db;
+    db.connection();
+    db.modifyClient(ui->tableView, myModel);
+    //on ouvre l interface de création d'un nouveau client avec la méthode cclient de mainwindows
+    CClient();
+    //cette méthode peut retouner un client pour actualiser la statut de la creation
+    //ui->statusbar->showMessage(client.Created);
+   db.deconnection();
 
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    //ui->treeView->ser
+}
+
+void MainWindow::on_BTN_LoadPersonnel_clicked()
+{
+    DB_manager db;
+    db.connection();
+    db.loadPersonnel(modelTreePersonnel);
+   db.deconnection();
+}
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    DB_manager db;
+    db.connection();
+    db.deletePersonnel(ui->treeView, modelTreePersonnel);
+   db.deconnection();
 }

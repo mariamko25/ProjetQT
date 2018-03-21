@@ -14,6 +14,12 @@ NClient::~NClient()
     delete ui;
 }
 
+void NClient::addClient(CClient customer)
+{
+    //ui->NClient.FirstName->insert(&customer.getPrenom());
+    //ui->NClient.LastName->insert(&customer.getNom());
+}
+
 
 void NClient::on_Ok_clicked()
 {

@@ -19,15 +19,15 @@
      <rect>
       <x>20</x>
       <y>20</y>
-      <width>691</width>
-      <height>421</height>
+      <width>871</width>
+      <height>551</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
      <item row="0" column="0">
-      <widget class="QTabWidget" name="tabWidget">
+      <widget class="QTabWidget" name="tabW_Personnel">
        <property name="currentIndex">
-        <number>0</number>
+        <number>2</number>
        </property>
        <widget class="QWidget" name="Research">
         <attribute name="title">
@@ -36,9 +36,9 @@
         <widget class="QWidget" name="horizontalLayoutWidget">
          <property name="geometry">
           <rect>
-           <x>90</x>
-           <y>0</y>
-           <width>411</width>
+           <x>110</x>
+           <y>40</y>
+           <width>511</width>
            <height>41</height>
           </rect>
          </property>
@@ -46,21 +46,28 @@
           <item>
            <widget class="QLineEdit" name="LE_Firstname">
             <property name="text">
-             <string>Firstname</string>
+             <string/>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QLineEdit" name="LE_Lastname">
             <property name="text">
-             <string>Lastname</string>
+             <string/>
             </property>
            </widget>
           </item>
           <item>
            <widget class="QLineEdit" name="LE_ID">
             <property name="text">
-             <string>ID</string>
+             <string/>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="Btn_ResearchBy">
+            <property name="text">
+             <string>Research</string>
             </property>
            </widget>
           </item>
@@ -69,8 +76,8 @@
         <widget class="QWidget" name="horizontalLayoutWidget_2">
          <property name="geometry">
           <rect>
-           <x>150</x>
-           <y>40</y>
+           <x>160</x>
+           <y>90</y>
            <width>317</width>
            <height>31</height>
           </rect>
@@ -84,7 +91,11 @@
            </widget>
           </item>
           <item>
-           <widget class="QDateEdit" name="dateEdit"/>
+           <widget class="QDateEdit" name="dateEdit">
+            <property name="displayFormat">
+             <string>yyyy-MM-dd</string>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QLabel" name="label_2">
@@ -94,25 +105,29 @@
            </widget>
           </item>
           <item>
-           <widget class="QDateEdit" name="dateEdit_2"/>
+           <widget class="QDateEdit" name="dateEdit_2">
+            <property name="displayFormat">
+             <string notr="true">yyyy-MM-dd</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
         <widget class="QTableView" name="tableView">
          <property name="geometry">
           <rect>
-           <x>20</x>
-           <y>80</y>
-           <width>531</width>
-           <height>241</height>
+           <x>30</x>
+           <y>140</y>
+           <width>651</width>
+           <height>321</height>
           </rect>
          </property>
         </widget>
         <widget class="QPushButton" name="Btn_Load">
          <property name="geometry">
           <rect>
-           <x>230</x>
-           <y>340</y>
+           <x>310</x>
+           <y>470</y>
            <width>93</width>
            <height>28</height>
           </rect>
@@ -124,7 +139,7 @@
         <widget class="QWidget" name="verticalLayoutWidget">
          <property name="geometry">
           <rect>
-           <x>570</x>
+           <x>700</x>
            <y>100</y>
            <width>101</width>
            <height>191</height>
@@ -132,7 +147,7 @@
          </property>
          <layout class="QVBoxLayout" name="verticalLayout">
           <item>
-           <widget class="QPushButton" name="pushButton">
+           <widget class="QPushButton" name="BtnModifyClient">
             <property name="text">
              <string>modify</string>
             </property>
@@ -147,49 +162,34 @@
           </item>
          </layout>
         </widget>
-        <widget class="QWidget" name="verticalLayoutWidget_2">
+        <widget class="QWidget" name="horizontalLayoutWidget_3">
          <property name="geometry">
           <rect>
-           <x>530</x>
-           <y>0</y>
-           <width>121</width>
-           <height>71</height>
+           <x>110</x>
+           <y>10</y>
+           <width>411</width>
+           <height>31</height>
           </rect>
          </property>
-         <layout class="QVBoxLayout" name="verticalLayout_2">
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
-           <widget class="QComboBox" name="CBox_ResearchBy">
-            <item>
-             <property name="text">
-              <string>Firstname</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Lastname</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>ID</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>date</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>name</string>
-             </property>
-            </item>
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>Firstname</string>
+            </property>
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="Btn_ResearchBy">
+           <widget class="QLabel" name="label_4">
             <property name="text">
-             <string>Research</string>
+             <string>Lasname</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_3">
+            <property name="text">
+             <string>id</string>
             </property>
            </widget>
           </item>
@@ -271,6 +271,51 @@
              </property>
             </item>
            </widget>
+          </item>
+         </layout>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="tab">
+        <attribute name="title">
+         <string>Staff</string>
+        </attribute>
+        <widget class="QWidget" name="horizontalLayoutWidget_4">
+         <property name="geometry">
+          <rect>
+           <x>30</x>
+           <y>40</y>
+           <width>811</width>
+           <height>411</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QPushButton" name="BTN_LoadPersonnel">
+            <property name="text">
+             <string>Load</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTreeView" name="treeView"/>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <item>
+             <widget class="QPushButton" name="pushButton_3">
+              <property name="text">
+               <string>Modify</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_4">
+              <property name="text">
+               <string>Delete</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </widget>

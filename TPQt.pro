@@ -1,7 +1,7 @@
 QT += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-QT+=sql
+QT += sql
 TARGET = TPQt
 TEMPLATE = app
 
@@ -27,7 +27,10 @@ SOURCES += main.cpp \
     CRdv.cpp \
     ctriclient.cpp \
     c_init_bd.cpp \
-    connection.cpp
+    connection.cpp \
+    db_manager.cpp \
+    treeitem.cpp \
+    treemodel.cpp
 
 FORMS += \
     mainwindow.ui \
@@ -45,9 +48,11 @@ HEADERS += \
     cclient.h \
     CRdv.h \
     ctriclient.h \
-    c.h \
     c_init_bd.h \
-    connection.h
+    connection.h \
+    db_manager.h \
+    treeitem.h \
+    treemodel.h
 
 RESOURCES += \
     image.qrc

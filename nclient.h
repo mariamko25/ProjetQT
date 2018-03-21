@@ -2,6 +2,7 @@
 #define NCLIENT_H
 
 #include <QDialog>
+#include<cclient.h>
 
 namespace Ui {
 class NClient;
@@ -15,6 +16,8 @@ public:
     explicit NClient(QWidget *parent = 0);
     QString Created;
     ~NClient();
+    void addClient(CClient customer);
+
 
 private slots:
 

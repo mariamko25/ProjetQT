@@ -4,7 +4,6 @@ QDate CClient::getDate() const
 {
     return date;
 }
-
 void CClient::setDate(const QDate &value)
 {
     date = value;

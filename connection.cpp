@@ -25,7 +25,7 @@ Connection::Connection()
     db.setDatabaseName("base_tmp.sqli");}
 }
 
-Connection::open()
+void Connection::open()
 {
     if(db.isValid())
     {
@@ -34,7 +34,7 @@ Connection::open()
 
 }
 
-Connection::close(){
+void Connection::close(){
 
     if(db.isValid())
     {db.close();
