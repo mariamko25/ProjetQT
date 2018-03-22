@@ -14,6 +14,9 @@
 #include "cpersonnel.h"
 #include "npersonnel.h"
 #include "cclient.h"
+#include"QDateEdit"
+#include<qvector.h>
+#include<cplanning.h>
 
 class DB_manager
 {
@@ -33,10 +36,17 @@ private:
     bool loadPersonnel( QStandardItemModel * model);
     bool researchClient(QSqlQueryModel* myModel,QString Firstname,QString Lastname,
                                         QString id,QDate date1, QDate date2);
+
+    bool planning(QSqlQueryModel * model, QDateEdit* planningDate, QTextStream *out);
     void connection();
     void deconnection();
     bool addClientTodba(CClient client);
     QSqlDatabase getDb();
+    QVector<CClient> planningListClient(QDateEdit* planningDate);
+    QMap<int, CPersonnel> planningListPersonnel();
+
+
+
 };
 
 

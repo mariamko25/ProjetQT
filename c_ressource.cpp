@@ -10,6 +10,16 @@ c_ressource::c_ressource(QWidget *parent) :
     setWindowTitle("Select a ressource for your client");
 }
 
+int c_ressource::getId()
+{
+    return Id;
+}
+
+void c_ressource::setId(int value)
+{
+    Id = value;
+}
+
 c_ressource::~c_ressource()
 {
     delete ui;

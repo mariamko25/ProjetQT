@@ -30,6 +30,7 @@ public:
     void setFirstname(const QString &value);
     QString getLastname() const;
     void setLastname(const QString &value);
+    void setId(int value);
 };
 
 #endif // CRESSOURCE_H

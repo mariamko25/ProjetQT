@@ -21,6 +21,9 @@ public:
     QVector<int> ress;
     ~c_ressource();
 
+    static int getId();
+    static void setId(int value);
+
 private slots:
 
     void on_Cancel_clicked();

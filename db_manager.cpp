@@ -98,7 +98,12 @@ bool DB_manager::deletePersonnel(QTreeView *tableView, QStandardItemModel *myMod
      //interfaceClient->addClient(fname,lname,addr,city,cp,num);
     return succes;
 }*/
-
+/**
+ * @brief DB_manager::modifPersonnel
+ * @param treeview
+ * @param interface
+ * @return
+ */
 bool DB_manager::modifPersonnel( QTreeView *treeview, nPersonnel* interface)
 {
 
@@ -195,19 +200,19 @@ bool DB_manager::loadPersonnel(QStandardItemModel * model)
 
            }
 
-    //connection treeview et methode clicked
-   // connect(treeView, SIGNAL(clicked(QModelIndex)),
-     //       this, SLOT(clicked(QModelIndex)));
-    //méthode cliked
-    /*void MyWidget::clicked(const QModelIndex &index)
-    {
-        QStandardItem *item = myStandardItemModel->itemFromIndex(index);
-        // Do stuff with the item ...
-    }*/
     return true;
 }
 
-
+/**
+ * @brief DB_manager::researchClient
+ * @param myModel
+ * @param Firstname
+ * @param Lastname
+ * @param id
+ * @param date1
+ * @param date2
+ * @return
+ */
 bool DB_manager::researchClient(QSqlQueryModel* myModel,QString Firstname,
                                 QString Lastname, QString id,QDate date1, QDate date2)
 {
@@ -248,6 +253,10 @@ bool DB_manager::researchClient(QSqlQueryModel* myModel,QString Firstname,
 }
 
 
+
+/**
+ * @brief DB_manager::connection
+ */
 void DB_manager::connection()
 {
    db = QSqlDatabase::addDatabase("QSQLITE");
@@ -264,6 +273,12 @@ void DB_manager::connection()
    }
 
 }
+
+/**
+ * @brief DB_manager::addClientTodba
+ * @param client
+ * @return
+ */
 bool DB_manager::addClientTodba(CClient client)
 {
     connection();
@@ -300,6 +315,10 @@ bool DB_manager::addClientTodba(CClient client)
     deconnection();
     return test;
 }
+
+/**
+ * @brief DB_manager::deconnection
+ */
 void DB_manager::deconnection()
 {
     if(db.isValid())
@@ -313,3 +332,105 @@ QSqlDatabase DB_manager::getDb()
 {
     return db;
 }
+
+/*****************************************************
+                    Planning Code
+*****************************************************/
+/**
+ * @brief DB_manager::planning
+ * plannifie les rendez vous et retourne la liste des clients associés à la date
+ * @param model
+ * @param planningDate
+ * @return
+ */
+bool DB_manager::planning(QSqlQueryModel *model, QDateEdit* planningDate,QTextStream *out)
+{
+    bool succes=true;
+    //requête à exécuter lié à database
+    QSqlQuery query(db);
+    //exec de query return vrai ou faux si la requete a abouti ou pas
+    succes=query.exec("select* from TClient where DateRdv = '"+planningDate->date().toString("yyyy-MM-dd")+"'");
+   //si la requete n a pas abouti on affiche un erreur
+    if(!succes)
+    {
+        qDebug() << query.lastError().text();
+        qDebug() << "erreur sur la requête !\n";
+        return false;
+    }
+      model->setQuery(query);
+
+      /*********************************/
+      CPlanning plan;
+      plan.planning(planningListClient(planningDate),planningListPersonnel(), out);
+
+
+      return succes;
+}
+
+
+/**
+ * @brief DB_manager::planningListClient
+ * crée la liste des clients dans un vecteur
+ * @param planningDate
+ * @return
+ */
+QVector<CClient> DB_manager::planningListClient(QDateEdit* planningDate)
+{
+    QVector<CClient> listClient;
+    CClient client;
+    QSqlQuery query(db);//pour trouver les clients
+     QSqlQuery query2(db);//pour trouver les ressources associés
+
+     query.exec("select* from TClient where DateRdv = '"+planningDate->date().toString("yyyy-MM-dd")+"'");
+    while(query.next())
+           {
+
+               client.setId( query.value(0).toInt());
+               client.setNom( query.value(1).toString());
+               client.setPrenom(query.value(2).toString());
+               client.setAdresse(query.value(3).toString());
+               client.setVille( query.value(4).toString());
+               client.setCodePostal(query.value(5).toInt());
+               client.setCommentaire(query.value(6).toString());
+               client.setTelephone(query.value(7).toInt());
+               //client.setDate( query.value(8).toString());
+               client.setDureeConsultation(query.value(9).toInt());
+               client.setPriorite( query.value(10).toInt());
+               listClient.push_back(client);
+               qDebug()<<client.getNom()<< " a été créé depuis la bd ";
+               query2.exec("select IdRessource from TRdv where IdClient = '"+query.value(0).toString()+"'");
+                 //on rajoute les id des ressources au client correspondant
+                   while(query2.next())
+                   {
+                       client.addRessource(query2.value(0).toInt());
+                       qDebug()<<client.getNom()<< " a reçu comme ressource"<<query2.value(0).toInt();
+                   }
+           }
+    return listClient;
+}
+
+
+
+/**
+ * @brief DB_manager::planningListPersonnel
+ * @return un QMap<int, CPersonnel>  des personnel de la base
+ */
+QMap<int, CPersonnel> DB_manager::planningListPersonnel()
+{
+    QMap<int, CPersonnel> listRessource;
+    QSqlQuery query(db);
+    query.exec("select* from TRessource");
+    while(query.next())
+           {
+                CPersonnel ressource; //on crée et remplie la ressource
+                ressource.setId(query.value(0).toInt());
+                ressource.setFirstname(query.value(2).toString());
+                ressource.setLastname(query.value(1).toString());
+                //on insère la ressouce dans le map
+                listRessource.insert(ressource.getId(),ressource);
+
+               qDebug()<<ressource.getLastname()<< " la ressource  été créé depuis la bd ";
+            }
+    return listRessource;
+}
+

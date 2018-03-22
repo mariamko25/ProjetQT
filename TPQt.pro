@@ -28,7 +28,9 @@ SOURCES += main.cpp \
     ctriclient.cpp \
     c_init_bd.cpp \
     db_manager.cpp \
-    c_ressource.cpp
+    c_ressource.cpp \
+    cpersonnel.cpp \
+    cplanning.cpp
 
 
 FORMS += \
@@ -50,7 +52,9 @@ HEADERS += \
     ctriclient.h \
     c_init_bd.h \
     db_manager.h \
-    c_ressource.h
+    c_ressource.h \
+    cpersonnel.h \
+    cplanning.h
 
 
 RESOURCES += \
