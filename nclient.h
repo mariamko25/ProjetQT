@@ -16,7 +16,7 @@ public:
     explicit NClient(QWidget *parent = 0);
     QString Created;
     ~NClient();
-    void addClient(CClient customer);
+    void addClient(QString Fname, QString name,QString addr,QString city, QString cp,QString number );
 
 
 private slots:

@@ -27,9 +27,8 @@ SOURCES += main.cpp \
     CRdv.cpp \
     ctriclient.cpp \
     c_init_bd.cpp \
-    connection.cpp \
     db_manager.cpp \
-    treeitem.cpp \
+
 
 FORMS += \
     mainwindow.ui \
@@ -50,9 +49,8 @@ HEADERS += \
     ctriclient.h \
     c_init_bd.h \
     connection.h \
-    db_manager.h \
-    treeitem.h \
-    treemodel.h
+    db_manager.h
+
 
 RESOURCES += \
     image.qrc

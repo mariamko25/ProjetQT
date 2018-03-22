@@ -18,7 +18,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     //on relie le modèle à la tableview
     ui->tableView->setModel(myModel);
-    ui->treeView->setModel(modelTreePersonnel);
+     ui->treeView->setModel(modelTreePersonnel);
+
 
 
 }
@@ -121,7 +122,8 @@ void MainWindow::on_Btn_ResearchBy_clicked()
 {
     DB_manager db;
     db.connection();
-    db.researchClient(myModel,ui->LE_Firstname->text(),ui->LE_Lastname->text(),ui->LE_ID->text(),ui->dateEdit->date(),ui->dateEdit_2->date());
+    db.researchClient(myModel,ui->LE_Firstname->text(),ui->LE_Lastname->text(),
+                      ui->LE_ID->text(),ui->dateEdit->date(),ui->dateEdit_2->date());
    db.deconnection();
 }
 
@@ -137,14 +139,15 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::on_BtnModifyClient_clicked()
 {
-    DB_manager db;
-    db.connection();
-    db.modifyClient(ui->tableView, myModel);
-    //on ouvre l interface de création d'un nouveau client avec la méthode cclient de mainwindows
-    CClient();
-    //cette méthode peut retouner un client pour actualiser la statut de la creation
-    //ui->statusbar->showMessage(client.Created);
-   db.deconnection();
+
+   NClient *interfaceClient=new NClient(this); ;
+   DB_manager db;
+   db.connection();
+   db.modifyClient(ui->tableView,myModel, interfaceClient);
+   interfaceClient->exec();
+   ui->statusbar->showMessage(interfaceClient->Created);
+  db.deconnection();
+
 
 }
 
@@ -152,6 +155,7 @@ void MainWindow::on_BtnModifyClient_clicked()
 
 void MainWindow::on_BTN_LoadPersonnel_clicked()
 {
+
     DB_manager db;
     db.connection();
     db.loadPersonnel(modelTreePersonnel);
@@ -169,7 +173,6 @@ void MainWindow::on_pushButton_4_clicked()
 void MainWindow::on_pushButton_3_clicked()
 {
     nPersonnel *interfPersonnel=new nPersonnel(this); ;
-
     DB_manager db;
     db.connection();
     db.modifPersonnel(ui->treeView,interfPersonnel);

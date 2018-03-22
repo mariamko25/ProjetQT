@@ -38,6 +38,7 @@ bool DB_manager::deleteClient(QTableView *tableView, QSqlQueryModel* myModel)
 
 bool DB_manager::deletePersonnel(QTreeView *tableView, QStandardItemModel *myModel)
 {
+
     bool succes;
     //on récupère le nom de la ressource sélectionnée
     QString name=tableView->currentIndex().data(0).toString();
@@ -57,8 +58,8 @@ bool DB_manager::deletePersonnel(QTreeView *tableView, QStandardItemModel *myMod
         qDebug() << "erreur sur la requête !\n";
         return false;
     }
-      //myModel->set(query);
-    //loadPersonnel(myModel);
+    //on réactualise le model
+    loadPersonnel(myModel);
     return succes;
 }
 
@@ -68,12 +69,36 @@ bool DB_manager::deletePersonnel(QTreeView *tableView, QStandardItemModel *myMod
  * @param myModel
  * @return
  */
-bool DB_manager::modifyClient(QTableView *tableView, QSqlQueryModel *myModel)
+bool DB_manager::modifyClient(QTableView *tableView,QSqlQueryModel* myModel, NClient *interfaceClient)
 {
-    deleteClient(tableView,myModel);
+    bool succes;
+     QString id=myModel->index(tableView->currentIndex().row(),0).data().toString();
+    //on crée la requete
+    QSqlQuery query(db);
+
+    //on fait un prepare pour ajouter l'id à la requête
+    query.prepare("select * FROM TClient WHERE Id = ?");
+    query.addBindValue(id);
+    succes=query.exec();
+    if(!succes)
+    {
+       qDebug() << query.lastError().text();
+        qDebug() << "erreur sur la requête !\n";
+        return false;
+    }
+    query.next();
+     QString fname=query.value(1).toString();
+     QString lname=query.value(2).toString();
+     QString addr=query.value(3).toString();
+     QString city=query.value(4).toString();
+     QString cp=query.value(5).toString();
+     QString num=query.value(7).toString();
+
+     interfaceClient->addClient(fname,lname,addr,city,cp,num);
+    return succes;
 }
 
-bool DB_manager::modifPersonnel( QTreeView *treeview,nPersonnel* interface)
+bool DB_manager::modifPersonnel( QTreeView *treeview, nPersonnel* interface)
 {
 
     //on récupère le nom choisi
@@ -85,7 +110,7 @@ bool DB_manager::modifPersonnel( QTreeView *treeview,nPersonnel* interface)
 
     //on exécute
    //si la requete n a pas abouti on affiche un erreur
-    if(!query.exec("select * FROM TRessource where nom like "+name+" "))
+    if(!query.exec("select * FROM TRessource where Nom like '" + name + "' "))
     {
         qDebug() << query.lastError().text();
         qDebug() << "erreur sur la requête !\n";
@@ -110,6 +135,7 @@ bool DB_manager::modifPersonnel( QTreeView *treeview,nPersonnel* interface)
  */
 bool DB_manager::loadClient(QSqlQueryModel* myModel)
 {
+
     bool succes=true;
     //requête à exécuter lié à database
     QSqlQuery query(db);
@@ -133,7 +159,8 @@ bool DB_manager::loadClient(QSqlQueryModel* myModel)
  */
 bool DB_manager::loadPersonnel(QStandardItemModel * model)
 {
-
+    //on nettoie le modèle pour ne pas avoir deux arbres
+    model->clear();
     QSqlQuery query(db);
     QSqlQuery query2(db);
 

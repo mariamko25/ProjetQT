@@ -14,10 +14,14 @@ NClient::~NClient()
     delete ui;
 }
 
-void NClient::addClient(CClient customer)
+void NClient::addClient(QString Fname, QString name, QString addr, QString city, QString cp, QString number)
 {
-    //ui->NClient.FirstName->insert(&customer.getPrenom());
-    //ui->NClient.LastName->insert(&customer.getNom());
+    ui->PostalCode->setText(cp);
+    ui->LastName->setText(name);
+    ui->City->setText(city);
+    ui->Adress->setText(addr);
+    ui->FirstName->setText(Fname);
+    ui->PhoneNumber->setText(number);
 }
 
 
