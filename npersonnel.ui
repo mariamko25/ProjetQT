@@ -116,11 +116,6 @@
       </item>
       <item>
        <property name="text">
-        <string>Informaticien</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
         <string>Assureur Logement</string>
        </property>
       </item>
@@ -137,6 +132,11 @@
       <item>
        <property name="text">
         <string>Divers</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Informaticien</string>
        </property>
       </item>
      </widget>

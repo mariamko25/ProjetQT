@@ -9,6 +9,7 @@ class CRdv
     QTime hend;
     QString nomPrenom;
 public:
+    static int Id;
     //constructeur
 CRdv();
 CRdv(QTime hb, QTime hen, QString name);

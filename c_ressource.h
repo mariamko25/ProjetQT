@@ -16,6 +16,8 @@ class c_ressource : public QDialog
 
 public:
     explicit c_ressource(QWidget *parent = 0);
+    static int Id;
+    QVector<int> ress;
     ~c_ressource();
 
 private slots:
@@ -27,8 +29,12 @@ private slots:
 
     void on_Load_clicked();
 
+    void on_Add_clicked();
+
 private:
     Ui::c_ressource *ui;
+
+
 };
 
 #endif // C_RESSOURCE_H

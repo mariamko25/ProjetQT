@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "c_ressource.h"
+#include "db_manager.h"
 namespace Ui {
 class NClient;
 }
@@ -14,6 +15,7 @@ class NClient : public QDialog
 public:
     explicit NClient(QWidget *parent = 0);
     QString Created;
+    QVector<int> ress;
     ~NClient();
 
 private slots:
@@ -26,6 +28,7 @@ private slots:
 
 private:
     Ui::NClient *ui;
+    DB_manager db;
 
 
 };

@@ -7,7 +7,7 @@
 #include <QDebug>
 #include <QFile>
 #include<QTableView>
-
+#include "cclient.h"
 
 class DB_manager
 {
@@ -22,6 +22,7 @@ private:
     bool loadClient(QSqlQueryModel*myModel);
     void connection();
     void deconnection();
+    bool addClientTodba(CClient client);
 };
 
 #endif // DB_MANAGER_H

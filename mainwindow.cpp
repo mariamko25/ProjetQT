@@ -106,7 +106,7 @@ void MainWindow::on_Btn_Load_clicked()
     DB_manager db;
     db.connection();
     db.loadClient(myModel);
-   db.deconnection();
+    db.deconnection();
 
 }
 
@@ -162,5 +162,5 @@ void MainWindow::on_pushButton_2_clicked()
     DB_manager db;
     db.connection();
     db.deleteClient(ui->tableView, myModel);
-   db.deconnection();
+    db.deconnection();
 }

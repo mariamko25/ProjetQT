@@ -1,5 +1,6 @@
 #include "cclient.h"
 
+int CClient::Id=7;
 QDate CClient::getDate() const
 {
     return date;
@@ -148,12 +149,18 @@ CClient::CClient(QString nm, QString pr)
     dureeConsultation=60;
 }
 
-CClient::CClient(QString nm, QString pr, int prior, int duree, QVector<int> ress)
+CClient::CClient(QString nm, QString pr,QString addr,QString v,int cp,int tel,QDate d,int prior, int duree, QVector<int> ress,QString comm)
 {
     nom=nm;
     prenom=pr;
+    adresse=addr;
+    ville=v;
+    codePostal=cp;
+    telephone=tel;
+    date=d;
     priorite=prior;
     dureeConsultation= duree;
+    commentaire=comm;
     listRessource=ress;
-
 }
+

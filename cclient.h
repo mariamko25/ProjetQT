@@ -20,10 +20,11 @@ private:
     QVector<int> listRessource;
     QDate date;
 public:
+    static int Id;
     //constructeur
     CClient();
     CClient(QString nm, QString pr);
-    CClient(QString nm, QString pr,int prior, int duree, QVector<int> ress);
+    CClient(QString nm, QString pr,QString addr,QString v,int cp,int tel,QDate d,int prior, int duree, QVector<int> ress,QString comm);
     //méthode
     QString getNom() const;
     void setNom(const QString &value);
@@ -51,6 +52,6 @@ public:
     void setIndice(int value);
     QDate getDate() const;
     void setDate(const QDate &value);
+    bool verifAttributes();
 };
-
 #endif // CCLIENT_H

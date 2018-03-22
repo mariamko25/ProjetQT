@@ -58,7 +58,7 @@ bool DB_manager::loadClient(QSqlQueryModel* myModel)
 
 void DB_manager::connection()
 {
-    db = QSqlDatabase::addDatabase("QSQLITE");
+   db = QSqlDatabase::addDatabase("QSQLITE");
    if(db.isValid())
    {
    db.setHostName("localhost");
@@ -72,7 +72,42 @@ void DB_manager::connection()
    }
 
 }
-
+bool DB_manager::addClientTodba(CClient client)
+{
+    connection();
+    QSqlQuery query(db);
+    if(!db.isOpen())
+    {
+        qDebug() << db.lastError().text();
+        qDebug() << "Erreur à louverture de la base !\n";
+        return false;
+    }
+    QString id= QString("%1").arg(client.Id);
+    QString myquery="INSERT INTO TClient  VALUES (";
+    myquery+="'"+id+"',";
+    myquery+="'"+client.getNom()+"',";
+    myquery+="'"+client.getPrenom()+"',";
+    myquery+="'"+client.getAdresse()+"',";
+    myquery+="'"+client.getVille()+"',";
+    myquery+="'"+QString("%1").arg(client.getCodePostal())+"',";
+    myquery+="'"+client.getCommentaire()+"',";
+    myquery+="'"+QString("%1").arg(client.getTelephone())+"',";
+    myquery+="'"+client.getDate().toString()+"',";
+    myquery+="'"+QString("%1").arg(client.getDureeConsultation())+"',";
+    myquery+="'"+QString("%1").arg(client.getPriorite())+"');";
+    bool test=query.exec(myquery);
+    if(test)
+    {
+        client.Id++;
+    }
+    else{
+        qDebug() << query.lastError().text();
+        qDebug() << "client non cree !\n";
+        return false;
+    }
+    deconnection();
+    return test;
+}
 void DB_manager::deconnection()
 {
     if(db.isValid())

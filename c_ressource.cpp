@@ -1,5 +1,7 @@
 #include "c_ressource.h"
 
+int c_ressource::Id=7;
+
 c_ressource::c_ressource(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::c_ressource)
@@ -23,6 +25,9 @@ void c_ressource::on_Cancel_clicked()
 void c_ressource::on_Ok_clicked()
 {
     accept();
+    Id++;
+
+
 }
 
 
@@ -36,10 +41,16 @@ void c_ressource::on_Load_clicked()
 
     QSqlQuery *qry= new QSqlQuery(con.getDb());
 
-    qry->prepare("select* from TRessource");
+    qry->prepare("select Id from TRessource");
     qry->exec();
     modal->setQuery(*qry);
     ui->tableView->setModel(modal);
 
     con.close();
+}
+
+void c_ressource::on_Add_clicked()
+{
+     QString s=ui->tableView->model()->data(ui->tableView->model()->index(ui->tableView->currentIndex().row(),ui->tableView->currentIndex().column())).toString();
+     ress.append(s.toInt());
 }
