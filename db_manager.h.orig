@@ -9,7 +9,13 @@
 #include<QTableView>
 #include<QDate>
 #include<QQueue>
+<<<<<<< HEAD
+#include<nclient.h>
+#include<QStandardItemModel>
+#include<QTreeView>
+=======
 
+>>>>>>> 92f75da1ebc1d3ea34a9fe6dc0dbdf28d34ccf42
 
 class DB_manager
 {
@@ -21,11 +27,21 @@ private:
     DB_manager();
 //méthodes
     bool deleteClient(QTableView *tableView, QSqlQueryModel* myModel);
+<<<<<<< HEAD
+    bool deletePersonnel(QTreeView *tableView, QStandardItemModel* myModel);
     bool modifyClient(QTableView *tableView, QSqlQueryModel* myModel);
     bool loadClient(QSqlQueryModel*myModel);
+    bool loadPersonnel( QStandardItemModel * model);
+=======
+    bool loadClient(QSqlQueryModel*myModel);
+>>>>>>> 92f75da1ebc1d3ea34a9fe6dc0dbdf28d34ccf42
     bool researchClient(QSqlQueryModel* myModel,QString Firstname,QString Lastname, QString id,QDate date1, QDate date2);
     void connection();
     void deconnection();
 };
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 92f75da1ebc1d3ea34a9fe6dc0dbdf28d34ccf42
 #endif // DB_MANAGER_H

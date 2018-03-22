@@ -27,7 +27,7 @@
      <item row="0" column="0">
       <widget class="QTabWidget" name="tabW_Personnel">
        <property name="currentIndex">
-        <number>2</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="Research">
         <attribute name="title">
@@ -38,45 +38,22 @@
           <rect>
            <x>110</x>
            <y>40</y>
-<<<<<<< HEAD
            <width>511</width>
-=======
-           <width>411</width>
->>>>>>> 92f75da1ebc1d3ea34a9fe6dc0dbdf28d34ccf42
            <height>41</height>
           </rect>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
            <widget class="QLineEdit" name="LE_Firstname">
-            <property name="inputMask">
-             <string/>
-            </property>
             <property name="text">
-<<<<<<< HEAD
              <string/>
-=======
-<<<<<<< HEAD
-             <string/>
-=======
-             <string>FirstName</string>
->>>>>>> f13c80a8d724ed26a1c16c2755118edcef839a78
->>>>>>> 92f75da1ebc1d3ea34a9fe6dc0dbdf28d34ccf42
             </property>
            </widget>
           </item>
           <item>
            <widget class="QLineEdit" name="LE_Lastname">
             <property name="text">
-<<<<<<< HEAD
              <string/>
-=======
-<<<<<<< HEAD
-             <string/>
-=======
-             <string>LastName</string>
->>>>>>> f13c80a8d724ed26a1c16c2755118edcef839a78
->>>>>>> 92f75da1ebc1d3ea34a9fe6dc0dbdf28d34ccf42
             </property>
            </widget>
           </item>
@@ -84,7 +61,6 @@
            <widget class="QLineEdit" name="LE_ID">
             <property name="text">
              <string/>
-<<<<<<< HEAD
             </property>
            </widget>
           </item>
@@ -92,8 +68,6 @@
            <widget class="QPushButton" name="Btn_ResearchBy">
             <property name="text">
              <string>Research</string>
-=======
->>>>>>> 92f75da1ebc1d3ea34a9fe6dc0dbdf28d34ccf42
             </property>
            </widget>
           </item>
@@ -191,38 +165,6 @@
         <widget class="QWidget" name="horizontalLayoutWidget_3">
          <property name="geometry">
           <rect>
-<<<<<<< HEAD
-           <x>110</x>
-           <y>10</y>
-           <width>411</width>
-           <height>31</height>
-=======
-           <x>530</x>
-           <y>20</y>
-           <width>121</width>
-           <height>71</height>
->>>>>>> 92f75da1ebc1d3ea34a9fe6dc0dbdf28d34ccf42
-          </rect>
-         </property>
-         <layout class="QHBoxLayout" name="horizontalLayout_3">
-          <item>
-<<<<<<< HEAD
-           <widget class="QLabel" name="label_5">
-            <property name="text">
-             <string>Firstname</string>
-=======
-           <widget class="QPushButton" name="Btn_ResearchBy">
-            <property name="text">
-             <string>Research</string>
->>>>>>> 92f75da1ebc1d3ea34a9fe6dc0dbdf28d34ccf42
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QWidget" name="horizontalLayoutWidget_3">
-         <property name="geometry">
-          <rect>
            <x>110</x>
            <y>10</y>
            <width>411</width>
@@ -231,10 +173,6 @@
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
-<<<<<<< HEAD
-           <widget class="QLabel" name="label_4">
-            <property name="text">
-=======
            <widget class="QLabel" name="label_5">
             <property name="text">
              <string>Firstname</string>
@@ -244,7 +182,6 @@
           <item>
            <widget class="QLabel" name="label_4">
             <property name="text">
->>>>>>> 92f75da1ebc1d3ea34a9fe6dc0dbdf28d34ccf42
              <string>Lasname</string>
             </property>
            </widget>
@@ -394,7 +331,7 @@
      <x>0</x>
      <y>0</y>
      <width>905</width>
-     <height>22</height>
+     <height>26</height>
     </rect>
    </property>
    <property name="defaultUp">

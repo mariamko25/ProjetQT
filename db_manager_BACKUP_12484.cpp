@@ -1,18 +1,36 @@
 #include "db_manager.h"
+
+
+<<<<<<< HEAD
+
+DB_manager::DB_manager()
+{
+
+}
+
 /**
  * @brief DB_manager::deleteClient méthode qui supprime un client
  * @param tableView
  * @param myModel
  * @return
  */
+bool DB_manager::deleteClient(QTableView *tableView, QSqlQueryModel* myModel)
+{
+    bool succes;
+    //on récupère l id du client sélectionné
+=======
 DB_manager::DB_manager()
 {
-
+    //model= QSqlQueryModel();
 }
 
 bool DB_manager::deleteClient(QTableView *tableView, QSqlQueryModel* myModel)
 {
     bool succes;
+
+    //on récupère l id du client sélectionné
+   // int id=myModel->index(tableView->currentIndex().row(),0).data().toInt();
+>>>>>>> 92f75da1ebc1d3ea34a9fe6dc0dbdf28d34ccf42
      QString id=myModel->index(tableView->currentIndex().row(),0).data().toString();
     //qDebug() << ui->tableView->currentIndex().row()+1 << id;
 
@@ -35,7 +53,13 @@ bool DB_manager::deleteClient(QTableView *tableView, QSqlQueryModel* myModel)
     return succes;
 }
 
-
+/**
+<<<<<<< HEAD
+ * @brief DB_manager::deletePersonnel
+ * @param tableView
+ * @param myModel
+ * @return
+ */
 bool DB_manager::deletePersonnel(QTreeView *tableView, QStandardItemModel *myModel)
 {
     bool succes;
@@ -73,37 +97,9 @@ bool DB_manager::modifyClient(QTableView *tableView, QSqlQueryModel *myModel)
     deleteClient(tableView,myModel);
 }
 
-bool DB_manager::modifPersonnel( QTreeView *treeview,nPersonnel* interface)
-{
-
-    //on récupère le nom choisi
-    QString name=treeview->currentIndex().data(0).toString();
-    qDebug() << name;
-
-    //on crée la requete
-    QSqlQuery query(db);
-
-    //on exécute
-   //si la requete n a pas abouti on affiche un erreur
-    if(!query.exec("select * FROM TRessource where nom like "+name+" "))
-    {
-        qDebug() << query.lastError().text();
-        qDebug() << "erreur sur la requête !\n";
-        return false;
-    }
-
-    query.next();
-    QString id=query.value(0).toString();
-     QString lname=query.value(1).toString();
-     QString fname=query.value(2).toString();
-     QString idtype=query.value(3).toString();
-     interface->addPersonnel(id,fname,lname,idtype);
-     return true;
-}
-
-
-
 /**
+=======
+>>>>>>> 92f75da1ebc1d3ea34a9fe6dc0dbdf28d34ccf42
  * @brief DB_manager::loadClient affiche tous les clients de la base de données
  * @param myModel
  * @return
@@ -125,7 +121,7 @@ bool DB_manager::loadClient(QSqlQueryModel* myModel)
       myModel->setQuery(query);
       return succes;
 }
-
+<<<<<<< HEAD
 /**
  * @brief DB_manager::loadPersonnel
  * @param model
@@ -167,6 +163,12 @@ bool DB_manager::loadPersonnel(QStandardItemModel * model)
 
            }
 
+      //model->setQuery(query);
+      //return succes;
+
+
+
+
     //connection treeview et methode clicked
    // connect(treeView, SIGNAL(clicked(QModelIndex)),
      //       this, SLOT(clicked(QModelIndex)));
@@ -177,7 +179,8 @@ bool DB_manager::loadPersonnel(QStandardItemModel * model)
         // Do stuff with the item ...
     }*/
 }
-
+=======
+>>>>>>> 92f75da1ebc1d3ea34a9fe6dc0dbdf28d34ccf42
 
 bool DB_manager::researchClient(QSqlQueryModel* myModel,QString Firstname,
                                 QString Lastname, QString id,QDate date1, QDate date2)
@@ -201,12 +204,19 @@ bool DB_manager::researchClient(QSqlQueryModel* myModel,QString Firstname,
          request.append("and Id='"+id+"' ");
     }
      QDate tempDate(2000, 01, 01);
-
+<<<<<<< HEAD
     if(date1!=tempDate && date2!=tempDate )
     {
       request.append(" and DateRdv BETWEEN '"+date1.toString("yyyy-MM-dd")+"'  AND  '"+date2.toString("yyyy-MM-dd")+"' ");
     }
+        //qDebug()<<date1.toString("yyyy-MM-dd");
+=======
+    if(tempDate!=date1 && date2!=tempDate )
+    {
+         //request.append(" and DateRdv BETWEEN '"+date1.toString("YYYY-MM-DD")+"'  AND  '"+date2.toString("YYYY-MM-DD")+"' ");
+    }
 
+>>>>>>> 92f75da1ebc1d3ea34a9fe6dc0dbdf28d34ccf42
     succes=qry.exec(request);
     if(!succes)
     {
@@ -217,8 +227,13 @@ bool DB_manager::researchClient(QSqlQueryModel* myModel,QString Firstname,
       myModel->setQuery(qry);
       return succes;
 }
+<<<<<<< HEAD
+/**
+ * @brief DB_manager::connection connecte à la base de donnée
+ */
+=======
 
-
+>>>>>>> 92f75da1ebc1d3ea34a9fe6dc0dbdf28d34ccf42
 void DB_manager::connection()
 {
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -227,6 +242,11 @@ void DB_manager::connection()
    db.setHostName("localhost");
    db.setUserName("root");
    db.setPassword("password");
+<<<<<<< HEAD
+=======
+   //if(QFile::exists("base_tmp.sqli"))
+      // QFile::remove("base_tmp.sqli");
+>>>>>>> 92f75da1ebc1d3ea34a9fe6dc0dbdf28d34ccf42
    db.setDatabaseName("base_tmp.sqli");}
 
    if(db.isValid())
@@ -235,6 +255,12 @@ void DB_manager::connection()
    }
 
 }
+<<<<<<< HEAD
+/**
+ * @brief DB_manager::deconnection
+ */
+=======
+>>>>>>> 92f75da1ebc1d3ea34a9fe6dc0dbdf28d34ccf42
 
 void DB_manager::deconnection()
 {
@@ -245,3 +271,9 @@ void DB_manager::deconnection()
     }
 }
 
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 92f75da1ebc1d3ea34a9fe6dc0dbdf28d34ccf42

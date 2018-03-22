@@ -2,8 +2,12 @@
 #define NCLIENT_H
 
 #include <QDialog>
+<<<<<<< HEAD
 #include<cclient.h>
 
+=======
+#include "c_ressource.h"
+>>>>>>> 92f75da1ebc1d3ea34a9fe6dc0dbdf28d34ccf42
 namespace Ui {
 class NClient;
 }
@@ -24,6 +28,8 @@ private slots:
     void on_Ok_clicked();
 
     void on_Cancel_clicked();
+
+    void on_Ressource_clicked();
 
 private:
     Ui::NClient *ui;

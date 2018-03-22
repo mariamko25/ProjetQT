@@ -34,8 +34,4 @@ void NClient::on_Cancel_clicked()
     Created.clear();
 }
 
-void NClient::on_Ressource_clicked()
-{
-    c_ressource ressource;
-    ressource.exec();
-}
+

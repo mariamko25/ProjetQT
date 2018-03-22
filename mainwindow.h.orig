@@ -1,6 +1,10 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
+<<<<<<< HEAD
 #include <QSqlQueryModel>
+=======
+#include "QSqlQueryModel"
+>>>>>>> 92f75da1ebc1d3ea34a9fe6dc0dbdf28d34ccf42
 #include <QMainWindow>
 #include "nclient.h"
 #include "npersonnel.h"
@@ -34,6 +38,7 @@ private slots:
     void on_Btn_ResearchBy_clicked();
 
     void on_pushButton_2_clicked();
+<<<<<<< HEAD
 
     void on_pushButton_clicked();
 
@@ -42,8 +47,8 @@ private slots:
     void on_BTN_LoadPersonnel_clicked();
 
     void on_pushButton_4_clicked();
-
-    void on_pushButton_3_clicked();
+=======
+>>>>>>> 92f75da1ebc1d3ea34a9fe6dc0dbdf28d34ccf42
 
 private:
     Ui::MainWindow *ui;
@@ -57,7 +62,10 @@ private:
     QAction *ClientTool;
     QAction *PersonnelTool;
     QSqlQueryModel *myModel;
+<<<<<<< HEAD
     QStandardItemModel * modelTreePersonnel;
+=======
+>>>>>>> 92f75da1ebc1d3ea34a9fe6dc0dbdf28d34ccf42
 
 
 

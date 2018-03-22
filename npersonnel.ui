@@ -23,28 +23,28 @@
     </rect>
    </property>
    <layout class="QFormLayout" name="formLayout">
-    <item row="5" column="0">
+    <item row="6" column="0">
      <widget class="QLabel" name="FirstNlabel">
       <property name="text">
        <string>Fistname</string>
       </property>
      </widget>
     </item>
-    <item row="5" column="1">
+    <item row="6" column="1">
      <widget class="QLineEdit" name="LE_Firstname">
       <property name="inputMask">
        <string>&gt;A&lt;AAAAAAAAAAAAAAAAAAAAAAAAAAAAA</string>
       </property>
      </widget>
     </item>
-    <item row="6" column="0">
+    <item row="7" column="0">
      <widget class="QLabel" name="LastNLabel">
       <property name="text">
        <string>Lastname</string>
       </property>
      </widget>
     </item>
-    <item row="6" column="1">
+    <item row="7" column="1">
      <widget class="QLineEdit" name="LE_Lastname">
       <property name="enabled">
        <bool>true</bool>
@@ -54,38 +54,38 @@
       </property>
      </widget>
     </item>
-    <item row="7" column="0">
+    <item row="8" column="0">
      <widget class="QLabel" name="Titlelabel">
       <property name="text">
        <string>Type</string>
       </property>
      </widget>
     </item>
-    <item row="8" column="0">
+    <item row="9" column="0">
      <widget class="QLabel" name="Loginlabel">
       <property name="text">
        <string>Login</string>
       </property>
      </widget>
     </item>
-    <item row="8" column="1">
+    <item row="9" column="1">
      <widget class="QLineEdit" name="LE_Login">
       <property name="enabled">
        <bool>true</bool>
       </property>
      </widget>
     </item>
-    <item row="10" column="0">
+    <item row="11" column="0">
      <widget class="QLabel" name="PasswordLabel">
       <property name="text">
        <string>Password</string>
       </property>
      </widget>
     </item>
-    <item row="10" column="1">
+    <item row="11" column="1">
      <widget class="QLineEdit" name="LE_Password"/>
     </item>
-    <item row="12" column="0">
+    <item row="13" column="0">
      <widget class="QPushButton" name="Cancel">
       <property name="enabled">
        <bool>true</bool>
@@ -95,14 +95,14 @@
       </property>
      </widget>
     </item>
-    <item row="12" column="1">
+    <item row="13" column="1">
      <widget class="QPushButton" name="Ok">
       <property name="text">
        <string>Cancel</string>
       </property>
      </widget>
     </item>
-    <item row="7" column="1">
+    <item row="8" column="1">
      <widget class="QComboBox" name="TypePersonnecomboBox">
       <item>
        <property name="text">
@@ -140,6 +140,16 @@
        </property>
       </item>
      </widget>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="label">
+      <property name="text">
+       <string>ID</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLineEdit" name="LE_ID"/>
     </item>
    </layout>
   </widget>

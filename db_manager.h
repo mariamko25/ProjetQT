@@ -12,6 +12,8 @@
 #include<nclient.h>
 #include<QStandardItemModel>
 #include<QTreeView>
+#include<cpersonnel.h>
+#include<npersonnel.h>
 
 class DB_manager
 {
@@ -25,6 +27,7 @@ private:
     bool deleteClient(QTableView *tableView, QSqlQueryModel* myModel);
     bool deletePersonnel(QTreeView *tableView, QStandardItemModel* myModel);
     bool modifyClient(QTableView *tableView, QSqlQueryModel* myModel);
+    bool modifPersonnel(QTreeView* treeview, nPersonnel* perso);
     bool loadClient(QSqlQueryModel*myModel);
     bool loadPersonnel( QStandardItemModel * model);
     bool researchClient(QSqlQueryModel* myModel,QString Firstname,QString Lastname, QString id,QDate date1, QDate date2);
