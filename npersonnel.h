@@ -15,7 +15,7 @@ public:
     explicit nPersonnel(QWidget *parent = 0);
     QString Created;
     ~nPersonnel();
-    void addPersonnel(QString id, QString name, QString surname,QString Type);
+    void addPersonnel( QString name, QString surname,QString Type);
 
 private slots:
     void on_Ok_clicked();

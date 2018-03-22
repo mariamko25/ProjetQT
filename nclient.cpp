@@ -1,7 +1,6 @@
 #include "nclient.h"
 #include "ui_nclient.h"
-#include "cclient.h"
-#include <vector>
+
 #include <iostream>
 using namespace std;
 
@@ -18,7 +17,7 @@ NClient::~NClient()
     delete ui;
 }
 
-void NClient::addClient(QString Fname, QString name, QString addr, QString city, QString cp, QString number)
+/*void NClient::addClient(QString Fname, QString name, QString addr, QString city, QString cp, QString number)
 {
     ui->PostalCode->setText(cp);
     ui->LastName->setText(name);
@@ -26,7 +25,7 @@ void NClient::addClient(QString Fname, QString name, QString addr, QString city,
     ui->Adress->setText(addr);
     ui->FirstName->setText(Fname);
     ui->PhoneNumber->setText(number);
-}
+}*/
 
 
 void NClient::on_Ok_clicked()

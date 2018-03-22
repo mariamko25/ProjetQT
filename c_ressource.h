@@ -3,8 +3,10 @@
 
 #include <QDialog>
 #include "ui_c_ressource.h"
+#include "db_manager.h"
 #include <QSqlQuery>
-#include "QSqlQueryModel"
+
+#include <QSqlQueryModel>
 namespace Ui {
 class c_ressource;
 }

@@ -8,6 +8,11 @@
 #include <QMenu>
 #include <QMenuBar>
 #include<QStandardItemModel>
+#include<db_manager.h>
+#include<QVariantList>
+#include <QDebug>
+
+
 namespace Ui {
 class MainWindow;
 }
@@ -35,7 +40,6 @@ private slots:
 
     void on_pushButton_2_clicked();
 
-    void on_pushButton_clicked();
 
     void on_BtnModifyClient_clicked();
 

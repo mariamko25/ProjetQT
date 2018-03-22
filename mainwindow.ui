@@ -182,7 +182,7 @@
           <item>
            <widget class="QLabel" name="label_4">
             <property name="text">
-             <string>Lasname</string>
+             <string>Lastname</string>
             </property>
            </widget>
           </item>
@@ -331,7 +331,7 @@
      <x>0</x>
      <y>0</y>
      <width>905</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
    <property name="defaultUp">

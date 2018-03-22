@@ -28,6 +28,7 @@ SOURCES += main.cpp \
     ctriclient.cpp \
     c_init_bd.cpp \
     db_manager.cpp \
+    c_ressource.cpp
 
 
 FORMS += \
@@ -48,8 +49,8 @@ HEADERS += \
     CRdv.h \
     ctriclient.h \
     c_init_bd.h \
-    connection.h \
-    db_manager.h
+    db_manager.h \
+    c_ressource.h
 
 
 RESOURCES += \
