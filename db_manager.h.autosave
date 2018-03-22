@@ -28,7 +28,7 @@ private:
 //méthodes
     bool deleteClient(QTableView *tableView, QSqlQueryModel* myModel);
     bool deletePersonnel(QTreeView *tableView, QStandardItemModel* myModel);
-   bool modifyClient(QTableView *tableView,QSqlQueryModel* myModel, NClient *interfaceClient);
+    bool modifyClient(QTableView *tableView,QSqlQueryModel* myModel, NClient *interfaceClient);
     bool modifPersonnel(QTreeView* treeview, nPersonnel* perso);
     bool loadClient(QSqlQueryModel*myModel);
     bool loadPersonnel( QStandardItemModel * model);

@@ -3,9 +3,9 @@
 
 #include <QDialog>
 #include "c_ressource.h"
-#include "db_manager.h"
 #include<cclient.h>
-
+#include"nclient.h"
+#include<db_manager.h>
 namespace Ui {
 class NClient;
 }

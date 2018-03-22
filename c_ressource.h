@@ -5,7 +5,6 @@
 #include "ui_c_ressource.h"
 #include <QSqlQuery>
 #include "QSqlQueryModel"
-#include "connection.h"
 namespace Ui {
 class c_ressource;
 }
