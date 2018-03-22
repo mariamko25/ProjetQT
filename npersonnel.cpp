@@ -15,6 +15,15 @@ nPersonnel::~nPersonnel()
     delete ui;
 }
 
+void nPersonnel::addPersonnel(QString id, QString name, QString surname, QString Type)
+{
+    ui->LE_ID->setText(id);
+    ui->LE_Firstname->setText(name);
+    ui->LE_Lastname->setText(surname);
+    ui->TypePersonnecomboBox->setEditText(Type);
+}
+
+
 void nPersonnel::on_Ok_clicked()
 {
     accept();

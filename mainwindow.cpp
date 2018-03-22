@@ -1,6 +1,5 @@
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
-#include "connection.h"
+#include <mainwindow.h>
+#include <ui_mainwindow.h>
 #include<QVariantList>
 #include <QDebug>
 #include<db_manager.h>
@@ -12,15 +11,23 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->statusbar->showMessage("Connected");
     createActions();
     createMenus();
+
+    //on initialise les modeles avec la fenetre pour parent
     myModel=new QSqlQueryModel(this);
+    modelTreePersonnel= new QStandardItemModel(this);
+
+    //on relie le modèle à la tableview
     ui->tableView->setModel(myModel);
+     ui->treeView->setModel(modelTreePersonnel);
+
+
 
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-  
+
 }
 
 void MainWindow::QExit()
@@ -29,6 +36,9 @@ void MainWindow::QExit()
 
 }
 
+/**
+ * @brief MainWindow::CClient création d'un nouveau client à partir de l'interface
+ */
 void MainWindow::CClient()
 {
     NClient client;
@@ -36,6 +46,7 @@ void MainWindow::CClient()
     ui->statusbar->showMessage(client.Created);
 
 }
+
 void MainWindow::CPersonnel()
 {
     //ui->label->setText("Personnel");
@@ -96,13 +107,10 @@ void MainWindow::createActions()
     PersonnelTool->setIcon(personnelIcon);
     connect(PersonnelTool, &QAction::triggered, this, &MainWindow::CPersonnel);
 
-
 }
 
 void MainWindow::on_Btn_Load_clicked()
 {
-
-
     DB_manager db;
     db.connection();
     db.loadClient(myModel);
@@ -112,49 +120,11 @@ void MainWindow::on_Btn_Load_clicked()
 
 void MainWindow::on_Btn_ResearchBy_clicked()
 {
-    Connection con= Connection();
-      con.open();
-
-
-      QSqlQuery* qry= new QSqlQuery(con.getDb());
-
-      QString combovalue=ui->CBox_ResearchBy->currentText();
-
-      if(combovalue=="Firstname")
-      {
-          qry->prepare("select* from TClient where UPPER(Prenom)=UPPER(?)");
-          qry->addBindValue(ui->LE_Firstname->text());
-      }
-      else if(combovalue=="Lastname")
-      {
-          qry->prepare("select* from TClient where upper(Nom)=upper(?)");
-          qry->addBindValue(ui->LE_Lastname->text());
-      }
-      else if(combovalue=="ID")
-      {
-          qry->prepare("select* from TClient where Id=?");
-          qry->addBindValue(ui->LE_ID->text());
-      }
-      else if(combovalue=="date")
-      {
-            qry->prepare("select* from TClient where DateRdv BETWEEN '?' AND '?' ");
-            ui->dateEdit->setDisplayFormat("YYYY-MM-DD");
-            ui->dateEdit_2->setDisplayFormat("YYYY-MM-DD");
-            qry->addBindValue(ui->dateEdit->date());
-            qry->addBindValue(ui->dateEdit_2->date());
-      }
-      else if(combovalue=="name")
-      {
-          qry->prepare("select* from TClient where upper(Nom)=upper(?) AND UPPER(Prenom)=UPPER(?) ");
-          qry->addBindValue(ui->LE_Firstname->text());
-          qry->addBindValue(ui->LE_Lastname->text());
-
-      }
-
-
-      qry->exec();
-      //model->setQuery(*qry);
-      con.close();
+    DB_manager db;
+    db.connection();
+    db.researchClient(myModel,ui->LE_Firstname->text(),ui->LE_Lastname->text(),
+                      ui->LE_ID->text(),ui->dateEdit->date(),ui->dateEdit_2->date());
+   db.deconnection();
 }
 
 void MainWindow::on_pushButton_2_clicked()
@@ -163,4 +133,52 @@ void MainWindow::on_pushButton_2_clicked()
     db.connection();
     db.deleteClient(ui->tableView, myModel);
     db.deconnection();
+}
+
+
+
+void MainWindow::on_BtnModifyClient_clicked()
+{
+
+   NClient *interfaceClient=new NClient(this); ;
+   DB_manager db;
+   db.connection();
+   db.modifyClient(ui->tableView,myModel, interfaceClient);
+   interfaceClient->exec();
+   ui->statusbar->showMessage(interfaceClient->Created);
+  db.deconnection();
+
+
+}
+
+
+
+void MainWindow::on_BTN_LoadPersonnel_clicked()
+{
+
+    DB_manager db;
+    db.connection();
+    db.loadPersonnel(modelTreePersonnel);
+   db.deconnection();
+}
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    DB_manager db;
+    db.connection();
+    db.deletePersonnel(ui->treeView, modelTreePersonnel);
+   db.deconnection();
+}
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    nPersonnel *interfPersonnel=new nPersonnel(this); ;
+    DB_manager db;
+    db.connection();
+    db.modifPersonnel(ui->treeView,interfPersonnel);
+    interfPersonnel->exec();
+    ui->statusbar->showMessage(interfPersonnel->Created);
+   db.deconnection();
+
+
 }

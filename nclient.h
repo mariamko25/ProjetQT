@@ -4,6 +4,8 @@
 #include <QDialog>
 #include "c_ressource.h"
 #include "db_manager.h"
+#include<cclient.h>
+
 namespace Ui {
 class NClient;
 }
@@ -17,14 +19,14 @@ public:
     QString Created;
     QVector<int> ress;
     ~NClient();
+    void addClient(QString Fname, QString name,QString addr,QString city, QString cp,QString number );
+
 
 private slots:
 
     void on_Ok_clicked();
 
     void on_Cancel_clicked();
-
-    void on_Ressource_clicked();
 
 private:
     Ui::NClient *ui;

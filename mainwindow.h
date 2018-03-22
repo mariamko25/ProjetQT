@@ -1,12 +1,13 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-#include "QSqlQueryModel"
+#include <QSqlQueryModel>
 #include <QMainWindow>
 #include "nclient.h"
 #include "npersonnel.h"
 #include "sabout.h"
 #include <QMenu>
 #include <QMenuBar>
+#include<QStandardItemModel>
 namespace Ui {
 class MainWindow;
 }
@@ -34,6 +35,16 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_pushButton_clicked();
+
+    void on_BtnModifyClient_clicked();
+
+    void on_BTN_LoadPersonnel_clicked();
+
+    void on_pushButton_4_clicked();
+
+    void on_pushButton_3_clicked();
+
 private:
     Ui::MainWindow *ui;
     QMenu *File;
@@ -46,6 +57,7 @@ private:
     QAction *ClientTool;
     QAction *PersonnelTool;
     QSqlQueryModel *myModel;
+    QStandardItemModel * modelTreePersonnel;
 
 
 

@@ -1,9 +1,12 @@
 #ifndef CINFORMATICIEN_H
 #define CINFORMATICIEN_H
+#include "cpersonnel.h"
 
-
-class CInformaticien
+class CInformaticien : CPersonnel
 {
+private:
+    QString login;
+    QString password;
 public:
     CInformaticien();
 };

@@ -1,42 +1,62 @@
-#include "c.h"
+#include<cpersonnel.h>
 
-CRessource::CRessource()
+QString CPersonnel::getFirstname() const
+{
+    return firstname;
+}
+
+void CPersonnel::setFirstname(const QString &value)
+{
+    firstname = value;
+}
+
+QString CPersonnel::getLastname() const
+{
+    return lastname;
+}
+
+void CPersonnel::setLastname(const QString &value)
+{
+    lastname = value;
+}
+
+CPersonnel::CPersonnel()
 {
 
 }
 
-QString CRessource::getTitle() const
+QString CPersonnel::getTitle() const
 {
     return title;
 }
 
-QMap<QTime, CRdv> CRessource::getAgenda() const
+QMap<QTime, CRdv> CPersonnel::getAgenda() const
 {
     return agenda;
 }
 
-void CRessource::setAgenda(const QMap<QTime, CRdv> &value)
+void CPersonnel::setAgenda(const QMap<QTime, CRdv> &value)
 {
     agenda = value;
 }
 
-void CRessource::setTitle(const QString &value)
+void CPersonnel::setTitle(const QString &value)
 {
     title = value;
 }
 
-void CRessource::addToAgenda(CRdv rdv)
+void CPersonnel::addToAgenda(CRdv rdv)
 {
     agenda.insert(rdv.getHbegin(),rdv);
 }
 
-CRessource::CRessource(int i, QString titre)
+CPersonnel::CPersonnel(int i, QString titre)
 {
     id=i;
     title=titre;
 }
 
-int CRessource::getId() const
+int CPersonnel::getId() const
 {
     return id;
 }

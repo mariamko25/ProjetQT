@@ -18,6 +18,16 @@ NClient::~NClient()
     delete ui;
 }
 
+void NClient::addClient(QString Fname, QString name, QString addr, QString city, QString cp, QString number)
+{
+    ui->PostalCode->setText(cp);
+    ui->LastName->setText(name);
+    ui->City->setText(city);
+    ui->Adress->setText(addr);
+    ui->FirstName->setText(Fname);
+    ui->PhoneNumber->setText(number);
+}
+
 
 void NClient::on_Ok_clicked()
 {
@@ -34,6 +44,7 @@ void NClient::on_Cancel_clicked()
     Created.clear();
 }
 
+
 void NClient::on_Ressource_clicked()
 {
     c_ressource ressource;
@@ -44,3 +55,4 @@ void NClient::on_Ressource_clicked()
         cout << " [" << *i << "]";
     }
 }
+
