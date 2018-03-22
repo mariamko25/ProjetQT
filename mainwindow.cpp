@@ -1,8 +1,5 @@
 #include <mainwindow.h>
 #include <ui_mainwindow.h>
-#include<QVariantList>
-#include <QDebug>
-#include<db_manager.h>
 
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
@@ -143,7 +140,7 @@ void MainWindow::on_BtnModifyClient_clicked()
    NClient *interfaceClient=new NClient(this); ;
    DB_manager db;
    db.connection();
-   db.modifyClient(ui->tableView,myModel, interfaceClient);
+  // db.modifyClient(ui->tableView,myModel, interfaceClient);
    interfaceClient->exec();
    ui->statusbar->showMessage(interfaceClient->Created);
   db.deconnection();

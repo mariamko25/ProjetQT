@@ -34,19 +34,18 @@ void c_ressource::on_Ok_clicked()
 
 void c_ressource::on_Load_clicked()
 {
-    Connection con= Connection();
-    con.open();
-
+    DB_manager dbmnger;
+    dbmnger.connection();
     QSqlQueryModel * modal= new QSqlQueryModel();
 
-    QSqlQuery *qry= new QSqlQuery(con.getDb());
+    QSqlQuery *qry= new QSqlQuery(dbmnger.getDb());
 
     qry->prepare("select Id from TRessource");
     qry->exec();
     modal->setQuery(*qry);
     ui->tableView->setModel(modal);
 
-    con.close();
+    dbmnger.deconnection();
 }
 
 void c_ressource::on_Add_clicked()

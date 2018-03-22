@@ -1,4 +1,5 @@
 #include "db_manager.h"
+
 /**
  * @brief DB_manager::deleteClient méthode qui supprime un client
  * @param tableView
@@ -69,7 +70,7 @@ bool DB_manager::deletePersonnel(QTreeView *tableView, QStandardItemModel *myMod
  * @param myModel
  * @return
  */
-bool DB_manager::modifyClient(QTableView *tableView,QSqlQueryModel* myModel, NClient *interfaceClient)
+/*bool DB_manager::modifyClient(QTableView *tableView,QSqlQueryModel* myModel, NClient *interfaceClient)
 {
     bool succes;
      QString id=myModel->index(tableView->currentIndex().row(),0).data().toString();
@@ -94,9 +95,9 @@ bool DB_manager::modifyClient(QTableView *tableView,QSqlQueryModel* myModel, NCl
      QString cp=query.value(5).toString();
      QString num=query.value(7).toString();
 
-     interfaceClient->addClient(fname,lname,addr,city,cp,num);
+     //interfaceClient->addClient(fname,lname,addr,city,cp,num);
     return succes;
-}
+}*/
 
 bool DB_manager::modifPersonnel( QTreeView *treeview, nPersonnel* interface)
 {
@@ -203,6 +204,7 @@ bool DB_manager::loadPersonnel(QStandardItemModel * model)
         QStandardItem *item = myStandardItemModel->itemFromIndex(index);
         // Do stuff with the item ...
     }*/
+    return true;
 }
 
 
@@ -307,3 +309,7 @@ void DB_manager::deconnection()
     }
 }
 
+QSqlDatabase DB_manager::getDb()
+{
+    return db;
+}
