@@ -2,6 +2,7 @@
 #define NPERSONNEL_H
 #include"cpersonnel.h"
 #include <QDialog>
+#include "db_manager.h"
 
 namespace Ui {
 class nPersonnel;
@@ -16,6 +17,13 @@ public:
     QString Created;
     ~nPersonnel();
     void addPersonnel(QString id, QString name, QString surname,QString Type);
+    bool getModify();
+
+    void setModify(bool modify);
+
+    CPersonnel getPersonnel();
+
+    void setPersonnel(CPersonnel personnel);
 
 private slots:
     void on_Ok_clicked();
@@ -24,6 +32,9 @@ private slots:
 
 private:
     Ui::nPersonnel *ui;
+    bool modify;
+    CPersonnel myPersonnel;
+    DB_manager db;
 };
 
 #endif // NPERSONNEL_H

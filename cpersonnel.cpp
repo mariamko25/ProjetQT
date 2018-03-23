@@ -1,4 +1,5 @@
 #include<cpersonnel.h>
+int CPersonnel::Id=13;
 
 QString CPersonnel::getFirstname() const
 {
@@ -59,4 +60,24 @@ CPersonnel::CPersonnel(int i, QString titre)
 int CPersonnel::getId() const
 {
     return id;
+}
+
+CPersonnel::CPersonnel(QString lname, QString fname, int idType)
+{
+    lastname=lname;
+    firstname=fname;
+    type=idType;
+}
+
+void CPersonnel::setId(int i)
+{
+    id=i;
+}
+
+CPersonnel::CPersonnel(int i, QString lname, QString fname, int idType)
+{
+    id=i;
+    lastname=lname;
+    firstname=fname;
+    type=idType;
 }

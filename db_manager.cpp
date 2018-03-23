@@ -43,14 +43,15 @@ bool DB_manager::deletePersonnel(QTreeView *tableView, QStandardItemModel *myMod
     bool succes;
     //on récupère le nom de la ressource sélectionnée
     QString name=tableView->currentIndex().data(0).toString();
+    QString id= name.at(0);
    // qDebug() << name;
 
     //on crée la requete
     QSqlQuery query(db);
 
     //on fait un prepare pour ajouter l'id à la requête
-    query.prepare("DELETE FROM TRessource WHERE Nom = ?");
-    query.addBindValue(name);
+    query.prepare("DELETE FROM TRessource WHERE Id = ?");
+    query.addBindValue(id);
     succes=query.exec();
 
     if(!succes)
@@ -70,61 +71,73 @@ bool DB_manager::deletePersonnel(QTreeView *tableView, QStandardItemModel *myMod
  * @param myModel
  * @return
  */
-/*bool DB_manager::modifyClient(QTableView *tableView,QSqlQueryModel* myModel, NClient *interfaceClient)
+bool DB_manager::modifyClient(CClient myclient)
 {
-    bool succes;
-     QString id=myModel->index(tableView->currentIndex().row(),0).data().toString();
-    //on crée la requete
+    connection();
     QSqlQuery query(db);
-
-    //on fait un prepare pour ajouter l'id à la requête
-    query.prepare("select * FROM TClient WHERE Id = ?");
-    query.addBindValue(id);
-    succes=query.exec();
-    if(!succes)
+    if(!db.isOpen())
     {
-       qDebug() << query.lastError().text();
-        qDebug() << "erreur sur la requête !\n";
+        qDebug() << db.lastError().text();
+        qDebug() << "Erreur à louverture de la base !\n";
         return false;
     }
-    query.next();
-     QString fname=query.value(1).toString();
-     QString lname=query.value(2).toString();
-     QString addr=query.value(3).toString();
-     QString city=query.value(4).toString();
-     QString cp=query.value(5).toString();
-     QString num=query.value(7).toString();
 
-     //interfaceClient->addClient(fname,lname,addr,city,cp,num);
-    return succes;
-}*/
-
-bool DB_manager::modifPersonnel( QTreeView *treeview, nPersonnel* interface)
-{
-
-    //on récupère le nom choisi
-    QString name=treeview->currentIndex().data(0).toString();
-    qDebug() << name;
-
-    //on crée la requete
-    QSqlQuery query(db);
-
-    //on exécute
-   //si la requete n a pas abouti on affiche un erreur
-    if(!query.exec("select * FROM TRessource where Nom like '" + name + "' "))
+    QString id= QString("%1").arg(myclient.getIndice());
+    QString myquery="UPDATE TClient  SET ";
+    myquery+="Nom='"+myclient.getNom()+"',";
+    myquery+="Prenom='"+myclient.getPrenom()+"',";
+    myquery+="Adresse='"+myclient.getAdresse()+"',";
+    myquery+="Ville='"+myclient.getVille()+"',";
+    myquery+="CP='"+QString("%1").arg(myclient.getCodePostal())+"',";
+    myquery+="Commentaire='"+myclient.getCommentaire()+"',";
+    myquery+="Tel='"+QString("%1").arg(myclient.getTelephone())+"',";
+    myquery+="DateRdv='"+myclient.getDate().toString()+"',";
+    myquery+="DureeRdv='"+QString("%1").arg(myclient.getDureeConsultation())+"',";
+    myquery+="Priorite='"+QString("%1").arg(myclient.getPriorite())+"' WHERE Id='"+id+"';";
+    bool test=query.exec(myquery);
+    if(test)
     {
+
+    }
+    else{
         qDebug() << query.lastError().text();
-        qDebug() << "erreur sur la requête !\n";
+        qDebug() << "client non modifie !\n";
+        return false;
+    }
+    deconnection();
+    return test;
+}
+
+bool DB_manager::modifPersonnel(CPersonnel Pers)
+{
+
+    connection();
+
+    if(!db.isOpen())
+    {
+        qDebug() << db.lastError().text();
+        qDebug() << "Erreur à louverture de la base !\n";
         return false;
     }
 
-    query.next();
-    QString id=query.value(0).toString();
-     QString lname=query.value(1).toString();
-     QString fname=query.value(2).toString();
-     QString idtype=query.value(3).toString();
-     interface->addPersonnel(id,fname,lname,idtype);
-     return true;
+    QSqlQuery query(db);
+    QString id= QString("%1").arg(Pers.getId());
+    QString myquery="UPDATE TRessource  SET ";
+    myquery+="Nom='"+Pers.getLastname()+"',";
+    myquery+="Prenom='"+Pers.getFirstname()+"',";
+    myquery+="IdType='"+QString("%1").arg(Pers.getType())+"' WHERE Id='"+id+"';";
+    bool test=query.exec(myquery);
+    if(test)
+    {
+
+    }
+    else{
+        qDebug() << query.lastError().text();
+        qDebug() << "personnel non modifie !\n";
+        return false;
+    }
+    deconnection();
+    return test;
 }
 
 
@@ -166,7 +179,7 @@ bool DB_manager::loadPersonnel(QStandardItemModel * model)
     QSqlQuery query2(db);
 
     query.exec("select Distinct id,Label from TType");
-     query2.prepare("select Nom from TRessource where IdType=? ");
+     query2.prepare("select Id,Nom from TRessource where IdType=? ");
 
      QStandardItem *parentItem = model->invisibleRootItem();
       QStandardItem *parentItem2=parentItem;
@@ -186,24 +199,17 @@ bool DB_manager::loadPersonnel(QStandardItemModel * model)
                query2.exec();
                while(query2.next())
                       {
+                           QString idStaff=query2.value(0).toString();
+                          QString name = query2.value(1).toString();//On récupère dans un QString la valeur que retourne la requête
+                          QStandardItem * itemId = new QStandardItem(idStaff+" "+name);
+                           //QStandardItem * itemName = new QStandardItem(name);
 
-                          QString name = query2.value(0).toString();//On récupère dans un QString la valeur que retourne la requête
-                      item = new QStandardItem(name);
-                          parentItem->appendRow(item);
+                          parentItem->appendRow(itemId);
+                         // parentItem->appendRow(itemName);
                       }
                parentItem=parentItem2;
 
            }
-
-    //connection treeview et methode clicked
-   // connect(treeView, SIGNAL(clicked(QModelIndex)),
-     //       this, SLOT(clicked(QModelIndex)));
-    //méthode cliked
-    /*void MyWidget::clicked(const QModelIndex &index)
-    {
-        QStandardItem *item = myStandardItemModel->itemFromIndex(index);
-        // Do stuff with the item ...
-    }*/
     return true;
 }
 
@@ -264,6 +270,37 @@ void DB_manager::connection()
    }
 
 }
+
+bool DB_manager::addPersonnelTodba(CPersonnel personnel)
+{
+    connection();
+    if(!db.isOpen())
+    {
+        qDebug() << db.lastError().text();
+        qDebug() << "Erreur à louverture de la base !\n";
+        return false;
+    }
+     QSqlQuery query(db);
+     QString id= QString("%1").arg(personnel.Id);
+     QString myquery="INSERT INTO TRessource VALUES (";
+      myquery+="'"+id+"',";
+      myquery+="'"+personnel.getLastname()+"',";
+      myquery+="'"+personnel.getFirstname()+"',";
+
+      myquery+="'"+ QString("%1").arg(personnel.getType())+"');";
+      bool test=query.exec(myquery);
+      if(test)
+      {
+          personnel.Id++;
+      }
+      else{
+          qDebug() << query.lastError().text();
+          qDebug() << "personnel non cree !\n";
+          return false;
+      }
+      deconnection();
+      return test;
+}
 bool DB_manager::addClientTodba(CClient client)
 {
     connection();
@@ -312,4 +349,61 @@ void DB_manager::deconnection()
 QSqlDatabase DB_manager::getDb()
 {
     return db;
+}
+
+CClient DB_manager::getClientFromdba(QTableView *tableView, QSqlQueryModel *myModel)
+{
+    bool succes;
+     QString id=myModel->index(tableView->currentIndex().row(),0).data().toString();
+    //on crée la requete
+    QSqlQuery query(db);
+
+    //on fait un prepare pour ajouter l'id à la requête
+    query.prepare("select * FROM TClient WHERE Id = ?");
+    query.addBindValue(id);
+    succes=query.exec();
+    if(!succes)
+    {
+       qDebug() << query.lastError().text();
+        qDebug() << "erreur sur la requête !\n";
+
+    }
+    query.next();
+    QString fname=query.value(1).toString();
+    QString lname=query.value(2).toString();
+    QString addr=query.value(3).toString();
+    QString city=query.value(4).toString();
+    QString cp=query.value(5).toString();
+    QString num=query.value(7).toString();
+    CClient client(lname,fname,addr,city,cp.toInt(),num.toInt());
+    client.setIndice(id.toInt());
+
+    return client;
+}
+
+CPersonnel DB_manager::getPersonnelFromdba(QTreeView *tableView)
+{
+     bool succes;
+     QString item=tableView->currentIndex().data(0).toString();
+     QString id=item.at(0);
+    //on crée la requete
+    QSqlQuery query(db);
+
+    //on fait un prepare pour ajouter l'id à la requête
+    query.prepare("select * FROM TRessource WHERE Id = ?");
+    query.addBindValue(id);
+    succes=query.exec();
+    if(!succes)
+    {
+       qDebug() << query.lastError().text();
+        qDebug() << "erreur sur la requête !\n";
+
+    }
+    query.next();
+    QString lname=query.value(1).toString();
+    QString fname=query.value(2).toString();
+    QString IdType=query.value(3).toString();
+    CPersonnel p(id.toInt(),lname,fname,IdType.toInt());
+
+    return p;
 }

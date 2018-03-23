@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     //on relie le modèle à la tableview
     ui->tableView->setModel(myModel);
-     ui->treeView->setModel(modelTreePersonnel);
+    ui->treeView->setModel(modelTreePersonnel);
 
 
 
@@ -36,7 +36,7 @@ void MainWindow::QExit()
 /**
  * @brief MainWindow::CClient création d'un nouveau client à partir de l'interface
  */
-void MainWindow::CClient()
+void MainWindow::cClient()
 {
     NClient client;
     client.exec();
@@ -44,7 +44,7 @@ void MainWindow::CClient()
 
 }
 
-void MainWindow::CPersonnel()
+void MainWindow::cPersonnel()
 {
     //ui->label->setText("Personnel");
     nPersonnel personnel;
@@ -77,7 +77,7 @@ void MainWindow::createActions()
     Client = new QAction(tr("&Client"), this);
     Client->setStatusTip(tr("Add a new Client"));
 
-    connect(Client, &QAction::triggered, this, &MainWindow::CClient);
+    connect(Client, &QAction::triggered, this, &MainWindow::cClient);
 
     Quit = new QAction(tr("&Exit"), this);
     Quit->setStatusTip(tr("Exit the application"));
@@ -86,7 +86,7 @@ void MainWindow::createActions()
     Personnel = new QAction(tr("&Personnel"), this);
     Personnel->setStatusTip(tr("Add a new Personnel"));
 
-    connect(Personnel, &QAction::triggered, this, &MainWindow::CPersonnel);
+    connect(Personnel, &QAction::triggered, this, &MainWindow::cPersonnel);
 
     aAbout = new QAction(tr("&About"), this);
     aAbout->setStatusTip(tr("Show information"));
@@ -96,13 +96,13 @@ void MainWindow::createActions()
     ClientTool->setStatusTip(tr("Add a new Client"));
     QIcon clientIcon(":clientIcon.jpeg");
     ClientTool->setIcon(clientIcon);
-    connect(ClientTool, &QAction::triggered, this, &MainWindow::CClient);
+    connect(ClientTool, &QAction::triggered, this, &MainWindow::cClient);
 
     PersonnelTool = new QAction(tr("&Personnel"), this);
     PersonnelTool->setStatusTip(tr("Add a new Personnel"));
     QIcon personnelIcon(":personnelIcon.jpeg");
     PersonnelTool->setIcon(personnelIcon);
-    connect(PersonnelTool, &QAction::triggered, this, &MainWindow::CPersonnel);
+    connect(PersonnelTool, &QAction::triggered, this, &MainWindow::cPersonnel);
 
 }
 
@@ -120,15 +120,7 @@ void MainWindow::on_Btn_ResearchBy_clicked()
     DB_manager db;
     db.connection();
     db.researchClient(myModel,ui->LE_Firstname->text(),ui->LE_Lastname->text(),
-                      ui->LE_ID->text(),ui->dateEdit->date(),ui->dateEdit_2->date());
-   db.deconnection();
-}
-
-void MainWindow::on_pushButton_2_clicked()
-{
-    DB_manager db;
-    db.connection();
-    db.deleteClient(ui->tableView, myModel);
+    ui->LE_ID->text(),ui->dateBeginning->date(),ui->dateEnd->date());
     db.deconnection();
 }
 
@@ -137,13 +129,15 @@ void MainWindow::on_pushButton_2_clicked()
 void MainWindow::on_BtnModifyClient_clicked()
 {
 
-   NClient *interfaceClient=new NClient(this); ;
+   NClient interfaceClient;
    DB_manager db;
    db.connection();
-  // db.modifyClient(ui->tableView,myModel, interfaceClient);
-   interfaceClient->exec();
-   ui->statusbar->showMessage(interfaceClient->Created);
-  db.deconnection();
+   CClient client=db.getClientFromdba(ui->tableView,myModel);
+   db.deconnection();
+   interfaceClient.setModify(true);
+   interfaceClient.setMyClient(client);
+   interfaceClient.exec();
+   ui->statusbar->showMessage("Client modified");
 
 
 }
@@ -156,26 +150,35 @@ void MainWindow::on_BTN_LoadPersonnel_clicked()
     DB_manager db;
     db.connection();
     db.loadPersonnel(modelTreePersonnel);
-   db.deconnection();
+    db.deconnection();
 }
 
-void MainWindow::on_pushButton_4_clicked()
+void MainWindow::on_BtnDeleteClient_clicked()
+{
+    DB_manager db;
+    db.connection();
+    db.deleteClient(ui->tableView, myModel);
+    db.deconnection();
+}
+
+void MainWindow::on_BtnModifyStaff_clicked()
+{
+    DB_manager db;
+    nPersonnel interfPersonnel;
+    db.connection();
+    CPersonnel pers= db.getPersonnelFromdba(ui->treeView);
+    db.deconnection();
+    interfPersonnel.setModify(true);
+    interfPersonnel.setPersonnel(pers);
+    interfPersonnel.exec();
+    ui->statusbar->showMessage("personnel modified");
+    db.deconnection();
+}
+
+void MainWindow::on_BtnDeleteStaff_clicked()
 {
     DB_manager db;
     db.connection();
     db.deletePersonnel(ui->treeView, modelTreePersonnel);
    db.deconnection();
-}
-
-void MainWindow::on_pushButton_3_clicked()
-{
-    nPersonnel *interfPersonnel=new nPersonnel(this); ;
-    DB_manager db;
-    db.connection();
-    db.modifPersonnel(ui->treeView,interfPersonnel);
-    interfPersonnel->exec();
-    ui->statusbar->showMessage(interfPersonnel->Created);
-   db.deconnection();
-
-
 }

@@ -27,7 +27,7 @@
      <item row="0" column="0">
       <widget class="QTabWidget" name="tabW_Personnel">
        <property name="currentIndex">
-        <number>0</number>
+        <number>2</number>
        </property>
        <widget class="QWidget" name="Research">
         <attribute name="title">
@@ -84,28 +84,28 @@
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
-           <widget class="QLabel" name="label">
+           <widget class="QLabel" name="LabelFrom">
             <property name="text">
              <string>from</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QDateEdit" name="dateEdit">
+           <widget class="QDateEdit" name="dateBeginning">
             <property name="displayFormat">
              <string>yyyy-MM-dd</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_2">
+           <widget class="QLabel" name="labelTo">
             <property name="text">
              <string>to</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QDateEdit" name="dateEdit_2">
+           <widget class="QDateEdit" name="dateEnd">
             <property name="displayFormat">
              <string notr="true">yyyy-MM-dd</string>
             </property>
@@ -154,7 +154,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_2">
+           <widget class="QPushButton" name="BtnDeleteClient">
             <property name="text">
              <string>delete</string>
             </property>
@@ -173,21 +173,21 @@
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
-           <widget class="QLabel" name="label_5">
+           <widget class="QLabel" name="labelFirstname">
             <property name="text">
              <string>Firstname</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_4">
+           <widget class="QLabel" name="labelLastname">
             <property name="text">
              <string>Lastname</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="label_3">
+           <widget class="QLabel" name="labelId">
             <property name="text">
              <string>id</string>
             </property>
@@ -223,7 +223,7 @@
            </widget>
           </item>
           <item row="4" column="0">
-           <widget class="QTableView" name="tableView_2"/>
+           <widget class="QTableView" name="tableviewPlanning"/>
           </item>
           <item row="3" column="0">
            <widget class="QComboBox" name="comboBox_Personne">
@@ -302,14 +302,14 @@
           <item>
            <layout class="QVBoxLayout" name="verticalLayout_3">
             <item>
-             <widget class="QPushButton" name="pushButton_3">
+             <widget class="QPushButton" name="BtnModifyStaff">
               <property name="text">
                <string>Modify</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_4">
+             <widget class="QPushButton" name="BtnDeleteStaff">
               <property name="text">
                <string>Delete</string>
               </property>

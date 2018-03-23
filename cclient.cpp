@@ -164,3 +164,13 @@ CClient::CClient(QString nm, QString pr,QString addr,QString v,int cp,int tel,QD
     listRessource=ress;
 }
 
+CClient::CClient(QString nm, QString pr, QString addr, QString v, int cp, int tel)
+{
+    nom=nm;
+    prenom=pr;
+    adresse=addr;
+    ville=v;
+    codePostal=cp;
+    telephone=tel;
+}
+

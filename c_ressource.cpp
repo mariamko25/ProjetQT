@@ -1,6 +1,5 @@
 #include "c_ressource.h"
 
-int c_ressource::Id=7;
 
 c_ressource::c_ressource(QWidget *parent) :
     QDialog(parent),
@@ -25,7 +24,6 @@ void c_ressource::on_Cancel_clicked()
 void c_ressource::on_Ok_clicked()
 {
     accept();
-    Id++;
 
 
 }

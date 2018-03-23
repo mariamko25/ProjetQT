@@ -20,6 +20,13 @@ public:
     QString Created;
     QVector<int> ress;
     ~NClient();
+    bool getModify();
+
+    void setModify(bool modify);
+
+    CClient getMyClient();
+
+    void setMyClient(CClient client);
 
 private slots:
 
@@ -29,9 +36,13 @@ private slots:
 
     void on_Ressource_clicked();
 
+
+
 private:
     Ui::NClient *ui;
     DB_manager db;
+    bool modify;
+    CClient myClient;
 
 
 };

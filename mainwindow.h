@@ -5,6 +5,7 @@
 #include "nclient.h"
 #include "npersonnel.h"
 #include "sabout.h"
+#include "cclient.h"
 #include <QMenu>
 #include <QMenuBar>
 #include<QStandardItemModel>
@@ -28,26 +29,24 @@ public:
 private slots:
     void createMenus();
     void createActions();
-    void CClient();
+    void cClient();
     void QExit();
-    void CPersonnel();
+    void cPersonnel();
     void slotAbout();
     void on_Btn_Load_clicked();
 
-   // void on_pushButton_3_clicked();
-
     void on_Btn_ResearchBy_clicked();
-
-    void on_pushButton_2_clicked();
-
 
     void on_BtnModifyClient_clicked();
 
     void on_BTN_LoadPersonnel_clicked();
 
-    void on_pushButton_4_clicked();
 
-    void on_pushButton_3_clicked();
+    void on_BtnDeleteClient_clicked();
+
+    void on_BtnModifyStaff_clicked();
+
+    void on_BtnDeleteStaff_clicked();
 
 private:
     Ui::MainWindow *ui;

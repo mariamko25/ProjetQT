@@ -25,6 +25,7 @@ public:
     CClient();
     CClient(QString nm, QString pr);
     CClient(QString nm, QString pr,QString addr,QString v,int cp,int tel,QDate d,int prior, int duree, QVector<int> ress,QString comm);
+    CClient(QString nm, QString pr,QString addr,QString v,int cp,int tel);
     //méthode
     QString getNom() const;
     void setNom(const QString &value);

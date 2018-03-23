@@ -16,10 +16,14 @@ private :
 
 public:
     //contructor
-    CPersonnel();
+     CPersonnel();
      CPersonnel(int i, QString titre);
+     CPersonnel(QString lname,QString fname,int idType);
+     CPersonnel(int id,QString lname,QString fname,int idType);
+     static int Id;
 
     //method
+    void setId(int id);
     int getId() const;
     QString getTitle() const;
     QMap<QTime, CRdv> getAgenda() const;
@@ -30,6 +34,8 @@ public:
     void setFirstname(const QString &value);
     QString getLastname() const;
     void setLastname(const QString &value);
+    int getType(){return type;}
+    void setType(int t){type=t;}
 };
 
 #endif // CRESSOURCE_H
