@@ -10,6 +10,16 @@ void CClient::setDate(const QDate &value)
     date = value;
 }
 
+int CClient::getId()
+{
+    return Id;
+}
+
+void CClient::setId(int value)
+{
+    Id = value;
+}
+
 CClient::CClient()
 {
     dureeConsultation=60;
@@ -147,6 +157,15 @@ CClient::CClient(QString nm, QString pr)
     nom=nm;
     prenom=pr;
     dureeConsultation=60;
+}
+
+CClient::CClient(QString nm, QString prm, int prior, int duree, QVector<int> listR)
+{
+    nom=nm;
+    prenom=prm;
+    priorite=prior;
+    dureeConsultation=duree;
+    listRessource=listR;
 }
 
 CClient::CClient(QString nm, QString pr,QString addr,QString v,int cp,int tel,QDate d,int prior, int duree, QVector<int> ress,QString comm)

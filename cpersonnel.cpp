@@ -21,9 +21,14 @@ void CPersonnel::setLastname(const QString &value)
     lastname = value;
 }
 
+void CPersonnel::setId(int value)
+{
+    id = value;
+}
+
 CPersonnel::CPersonnel()
 {
-
+    
 }
 
 QString CPersonnel::getTitle() const

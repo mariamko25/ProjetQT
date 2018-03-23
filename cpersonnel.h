@@ -36,6 +36,7 @@ public:
     void setLastname(const QString &value);
     int getType(){return type;}
     void setType(int t){type=t;}
+    void setId(int value);
 };
 
 #endif // CRESSOURCE_H

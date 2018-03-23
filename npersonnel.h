@@ -24,6 +24,7 @@ public:
     CPersonnel getPersonnel();
 
     void setPersonnel(CPersonnel personnel);
+    void addPersonnel( QString name, QString surname,QString Type);
 
 private slots:
     void on_Ok_clicked();

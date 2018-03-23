@@ -48,6 +48,8 @@ private slots:
 
     void on_BtnDeleteStaff_clicked();
 
+    void on_btnPlanning_clicked();
+
 private:
     Ui::MainWindow *ui;
     QMenu *File;
@@ -60,6 +62,7 @@ private:
     QAction *ClientTool;
     QAction *PersonnelTool;
     QSqlQueryModel *myModel;
+    QSqlQueryModel *ModelPlanning;
     QStandardItemModel * modelTreePersonnel;
 
 

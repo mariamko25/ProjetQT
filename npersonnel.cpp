@@ -16,6 +16,13 @@ nPersonnel::~nPersonnel()
 }
 
 
+void nPersonnel::addPersonnel( QString name, QString surname, QString Type)
+{
+    ui->LE_Firstname->setText(name);
+    ui->LE_Lastname->setText(surname);
+    ui->TypePersonnecomboBox->setEditText(Type);
+}
+
 
 void nPersonnel::on_Ok_clicked()
 {

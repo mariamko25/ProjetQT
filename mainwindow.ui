@@ -203,73 +203,37 @@
         <widget class="QWidget" name="gridLayoutWidget_3">
          <property name="geometry">
           <rect>
-           <x>20</x>
-           <y>20</y>
-           <width>371</width>
-           <height>201</height>
+           <x>30</x>
+           <y>30</y>
+           <width>771</width>
+           <height>371</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_3">
           <item row="0" column="0">
-           <widget class="QComboBox" name="comboBox_Jour">
-            <property name="currentText">
-             <string>Choisir une personne</string>
-            </property>
-            <item>
-             <property name="text">
-              <string>Choisir une personne</string>
-             </property>
-            </item>
-           </widget>
+           <widget class="QTableView" name="TABV_Planning"/>
           </item>
-          <item row="4" column="0">
-           <widget class="QTableView" name="tableviewPlanning"/>
+
+         </layout>
+        </widget>
+        <widget class="QWidget" name="horizontalLayoutWidget_5">
+         <property name="geometry">
+          <rect>
+           <x>70</x>
+           <y>410</y>
+           <width>701</width>
+           <height>81</height>
+          </rect>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <widget class="QDateEdit" name="DE_PlanningDate"/>
           </item>
-          <item row="3" column="0">
-           <widget class="QComboBox" name="comboBox_Personne">
-            <property name="currentText">
-             <string>Choisir un jour</string>
+          <item>
+           <widget class="QPushButton" name="btnPlanning">
+            <property name="text">
+             <string>Planning</string>
             </property>
-            <item>
-             <property name="text">
-              <string>Choisir un jour</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Lundi</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Mardi</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Mercredi</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Jeudi</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Vendredi</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Samedi</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Dimanche</string>
-             </property>
-            </item>
            </widget>
           </item>
          </layout>
@@ -331,7 +295,7 @@
      <x>0</x>
      <y>0</y>
      <width>905</width>
-     <height>22</height>
+     <height>26</height>
     </rect>
    </property>
    <property name="defaultUp">

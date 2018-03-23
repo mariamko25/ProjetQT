@@ -11,11 +11,14 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     //on initialise les modeles avec la fenetre pour parent
     myModel=new QSqlQueryModel(this);
+    ModelPlanning=new QSqlQueryModel(this);
     modelTreePersonnel= new QStandardItemModel(this);
 
-    //on relie le modèle à la tableview
+    //on relie les modèles aux  tableview/treeview
     ui->tableView->setModel(myModel);
-    ui->treeView->setModel(modelTreePersonnel);
+
+     ui->treeView->setModel(modelTreePersonnel);
+     ui->TABV_Planning->setModel(ModelPlanning);
 
 
 
@@ -181,4 +184,26 @@ void MainWindow::on_BtnDeleteStaff_clicked()
     db.connection();
     db.deletePersonnel(ui->treeView, modelTreePersonnel);
    db.deconnection();
+}
+
+void MainWindow::on_btnPlanning_clicked()
+{
+    //on prepare le chemin pour enregistrer le fichier
+    QString fileName=QFileDialog::getSaveFileName(
+                    this, QDir::currentPath(),"C://", "Text files (*.txt)");
+        QFile file(fileName);
+           if(!file.open(QFile::WriteOnly | QFile::Text))
+           {
+               QMessageBox box;
+               box.setText("erreur d'ouverture du fichier");
+               box.exec();
+           }
+    QTextStream  out(&file);
+     DB_manager db;
+    db.connection();
+    db.planning(ModelPlanning, ui->DE_PlanningDate,&out);
+    db.deconnection();
+    file.flush();
+    file.close();
+
 }

@@ -24,8 +24,14 @@ public:
     //constructeur
     CClient();
     CClient(QString nm, QString pr);
+<<<<<<< HEAD
     CClient(QString nm, QString pr,QString addr,QString v,int cp,int tel,QDate d,int prior, int duree, QVector<int> ress,QString comm);
     CClient(QString nm, QString pr,QString addr,QString v,int cp,int tel);
+=======
+    CClient(QString nm, QString prenom,int prior, int duree,QVector<int> listR);
+    CClient(QString nm, QString pr,QString addr,QString v,int cp,int tel,
+            QDate d,int prior, int duree, QVector<int> ress,QString comm);
+>>>>>>> e5dbc9b782a219212573ddf94f8404c0ea74932f
     //méthode
     QString getNom() const;
     void setNom(const QString &value);
@@ -54,5 +60,7 @@ public:
     QDate getDate() const;
     void setDate(const QDate &value);
     bool verifAttributes();
+    static int getId();
+    static void setId(int value);
 };
 #endif // CCLIENT_H

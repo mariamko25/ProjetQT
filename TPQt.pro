@@ -29,7 +29,12 @@ SOURCES += main.cpp \
     c_init_bd.cpp \
     db_manager.cpp \
     c_ressource.cpp \
+<<<<<<< HEAD
     cpersonnel.cpp
+=======
+    cpersonnel.cpp \
+    cplanning.cpp
+>>>>>>> e5dbc9b782a219212573ddf94f8404c0ea74932f
 
 
 FORMS += \
@@ -52,7 +57,12 @@ HEADERS += \
     c_init_bd.h \
     db_manager.h \
     c_ressource.h \
+<<<<<<< HEAD
     cpersonnel.h
+=======
+    cpersonnel.h \
+    cplanning.h
+>>>>>>> e5dbc9b782a219212573ddf94f8404c0ea74932f
 
 
 RESOURCES += \

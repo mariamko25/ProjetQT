@@ -5,6 +5,7 @@
 #include "ui_c_ressource.h"
 #include "db_manager.h"
 #include <QSqlQuery>
+
 #include <QSqlQueryModel>
 namespace Ui {
 class c_ressource;
@@ -18,6 +19,9 @@ public:
     explicit c_ressource(QWidget *parent = 0);
     QVector<int> ress;
     ~c_ressource();
+
+    static int getId();
+    static void setId(int value);
 
 private slots:
 
